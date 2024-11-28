@@ -187,11 +187,28 @@ class FormController {
 
     // 入力値のリセット
     content.querySelectorAll("input").forEach((input) => {
-      input.value = "";
+      if (input.type === "number") {
+        input.value = "";
+      } else if (input.type === "checkbox") {
+        input.checked = false;
+      }
     });
     content.querySelectorAll("select").forEach((select) => {
       select.selectedIndex = 0;
     });
+
+    // チェックボックスのIDを一意にする
+    const timestamp = Date.now();
+    content
+      .querySelectorAll('.print-position input[type="checkbox"]')
+      .forEach((checkbox) => {
+        const newId = `print-${checkbox.value}-${timestamp}`;
+        const label = checkbox.nextElementSibling;
+        checkbox.id = newId;
+        if (label) {
+          label.setAttribute("for", newId);
+        }
+      });
 
     // Step2,3を非表示に
     const step2 = content.querySelector(".simu-step02");
@@ -274,12 +291,13 @@ class FormController {
       }
     });
 
-    // プリント位置の収集
+    // プリント位置の収集を修正
     const printPositions = [];
-    const printSelect = document.querySelector(".print-position select");
-    if (printSelect && printSelect.value) {
-      printPositions.push(printSelect.value);
-    }
+    document
+      .querySelectorAll('.print-position input[type="checkbox"]:checked')
+      .forEach((checkbox) => {
+        printPositions.push(checkbox.value);
+      });
 
     // 袋詰めの設定を収集
     const hasBagging = document.querySelector("#ari").checked;
@@ -309,7 +327,7 @@ class FormController {
     }
 
     if (formData.printPositions.length === 0) {
-      alert("プリント箇所を選択してください。");
+      alert("プリント箇所を1つ以上選択してください。");
       return false;
     }
 
@@ -355,78 +373,81 @@ class FormController {
 
       if (contentProducts.length > 0) {
         html += `
-        <div class="block item-info">
-          <p class="name">${contentProducts[0].productName}</p>
-          ${contentProducts
-            .map(
-              (product) => `
-            <div class="group flex">
-              <p class="color">カラー：<span>${product.color}</span></p>
-              <div class="child">
-                ${product.sizes
-                  .map(
-                    (size) => `
-                  <div>
-                    <p class="size">サイズ：<span>${size.size}</span></p>
-                    <p class="quanntity">数量：<span>${
-                      size.quantity
-                    }枚</span></p>
-                    <p class="price"><span>${size.price.toLocaleString()}円</span></p>
-                  </div>
-                `
-                  )
-                  .join("")}
+          <div class="block item-info">
+            <p class="name">${contentProducts[0].productName}</p>
+            ${contentProducts
+              .map(
+                (product) => `
+              <div class="group flex">
+                <p class="color">カラー：<span>${product.color}</span></p>
+                <div class="child">
+                  ${product.sizes
+                    .map(
+                      (size) => `
+                    <div>
+                      <p class="size">サイズ：<span>${size.size}</span></p>
+                      <p class="quanntity">数量：<span>${
+                        size.quantity
+                      }枚</span></p>
+                      <p class="price"><span>${size.price.toLocaleString()}円</span></p>
+                    </div>
+                  `
+                    )
+                    .join("")}
+                </div>
               </div>
+            `
+              )
+              .join("")}
+            <div class="item-total flex">
+              <p>${contentProducts.reduce(
+                (sum, p) => sum + p.quantity,
+                0
+              )}枚</p>
+              <p><span>${contentProducts
+                .reduce((sum, p) => sum + p.subtotal, 0)
+                .toLocaleString()}円</span></p>
             </div>
-          `
-            )
-            .join("")}
-          <div class="item-total flex">
-            <p>${contentProducts.reduce((sum, p) => sum + p.quantity, 0)}枚</p>
-            <p><span>${contentProducts
-              .reduce((sum, p) => sum + p.subtotal, 0)
+          </div>
+        `;
+      }
+    });
+
+    // プリント位置の表示
+    if (result.breakdown.printing.length > 0) {
+      html += `
+        <div class="block print-position">
+          <p class="name">プリント箇所</p>
+          <div class="group flex">
+            <p>${result.breakdown.printing.map((p) => p.position).join("/")}</p>
+            <p><span>${result.breakdown.printing
+              .reduce((sum, p) => sum + p.price, 0)
               .toLocaleString()}円</span></p>
           </div>
         </div>
       `;
-      }
-    });
-
-    // プリント位置の表示（変更なし）
-    if (result.breakdown.printing.length > 0) {
-      html += `
-      <div class="block print-position">
-        <p class="name">プリント箇所</p>
-        <div class="group flex">
-          <p>${result.breakdown.printing.map((p) => p.position).join("/")}</p>
-          <p><span>${result.breakdown.printing
-            .reduce((sum, p) => sum + p.price, 0)
-            .toLocaleString()}円</span></p>
-        </div>
-      </div>
-    `;
     }
 
-    // 袋詰めオプションの表示（変更なし）
+    // 袋詰めオプションの表示
     if (result.breakdown.bagging > 0) {
       html += `
-      <div class="block option">
-        <p class="name">オプション</p>
-        <div class="group flex">
-          <p>袋詰め：あり（45円×${result.totalQuantity}枚）</p>
-          <p><span>${result.breakdown.bagging.toLocaleString()}円</span></p>
+        <div class="block option">
+          <p class="name">オプション</p>
+          <div class="group flex">
+            <p>袋詰め：あり（45円×${result.totalQuantity}枚）</p>
+            <p><span>${result.breakdown.bagging.toLocaleString()}円</span></p>
+          </div>
         </div>
-      </div>
-    `;
+      `;
     }
 
-    // 合計金額の表示（変更なし）
+    // 合計金額の表示
     html += `
-    <div class="total-price flex">
-      <p>合計金額<span>(税込)</span></p>
-      <p class="price">${result.total.toLocaleString()}円</p>
-    </div>
-  `;
+      <div class="total-price flex">
+        <p>合計金額<span>(税込)</span></p>
+        <p class="price">${result.total.toLocaleString()}円</p>
+      </div>
+    `;
 
     resultContent.innerHTML = html;
     document.querySelector(".result-wrap").style.display = "block";

@@ -948,16 +948,31 @@
                 <div class="print-position flex">
                   <div class="left">
                     <p>プリント箇所</p>
-                    <div class="select-wrap">
-                      <select>
-                        <option disabled selected value>選択してください</option>
-                        <option value="前面">前面（A）</option>
-                        <option value="背面">背面（B）</option>
-                        <option value="右胸">右胸（C）</option>
-                        <option value="左胸">左胸（D）</option>
-                        <option value="右肩">右肩（E）</option>
-                        <option value="左肩">左肩（F）</option>
-                      </select>
+                    <div class="checkboxes">
+                      <div class="checkbox-item">
+                        <input type="checkbox" id="print-front" value="前面">
+                        <label for="print-front">前面（A）</label>
+                      </div>
+                      <div class="checkbox-item">
+                        <input type="checkbox" id="print-back" value="背面">
+                        <label for="print-back">背面（B）</label>
+                      </div>
+                      <div class="checkbox-item">
+                        <input type="checkbox" id="print-right-chest" value="右胸">
+                        <label for="print-right-chest">右胸（C）</label>
+                      </div>
+                      <div class="checkbox-item">
+                        <input type="checkbox" id="print-left-chest" value="左胸">
+                        <label for="print-left-chest">左胸（D）</label>
+                      </div>
+                      <div class="checkbox-item">
+                        <input type="checkbox" id="print-right-shoulder" value="右肩">
+                        <label for="print-right-shoulder">右肩（E）</label>
+                      </div>
+                      <div class="checkbox-item">
+                        <input type="checkbox" id="print-left-shoulder" value="左肩">
+                        <label for="print-left-shoulder">左肩（F）</label>
+                      </div>
                     </div>
                   </div>
                   <div class="right img-box"><img src="images/common/form_ink-point.png" alt=""></div>

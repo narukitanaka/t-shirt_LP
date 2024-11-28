@@ -790,8 +790,25 @@ top
           }
         }
         .print-position {
-          gap: 8rem;
+          gap: 6rem;
           margin-bottom: 2.8rem;
+          .left {
+            max-width: 42rem;
+            .checkboxes {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 10px;
+              div {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                label {
+                  font-size: 1.6rem;
+                  font-weight: 500;
+                }
+              }
+            }
+          }
           .right {
             width: 28rem;
           }

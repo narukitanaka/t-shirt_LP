@@ -1094,8 +1094,25 @@ top
   margin-bottom: 1.5rem;
 }
 .wrap_form .simulation_wrap .simu-content .simu-step03 .print-position {
-  gap: 8rem;
+  gap: 6rem;
   margin-bottom: 2.8rem;
+}
+.wrap_form .simulation_wrap .simu-content .simu-step03 .print-position .left {
+  max-width: 42rem;
+}
+.wrap_form .simulation_wrap .simu-content .simu-step03 .print-position .left .checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.wrap_form .simulation_wrap .simu-content .simu-step03 .print-position .left .checkboxes div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.wrap_form .simulation_wrap .simu-content .simu-step03 .print-position .left .checkboxes div label {
+  font-size: 1.6rem;
+  font-weight: 500;
 }
 .wrap_form .simulation_wrap .simu-content .simu-step03 .print-position .right {
   width: 28rem;
