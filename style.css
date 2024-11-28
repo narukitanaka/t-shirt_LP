@@ -1053,10 +1053,6 @@ top
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
-.wrap_form .simulation_wrap .simu-content .simu-step02 .block .color-wrap p span,
-.wrap_form .simulation_wrap .simu-content .simu-step02 .block .size-wrap p span {
-  color: #ff5906;
-}
 .wrap_form .simulation_wrap .simu-content .simu-step02 .block .color-wrap {
   margin-bottom: 4rem;
 }

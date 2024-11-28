@@ -858,7 +858,7 @@
                 <div class="ttl">Step1：商品の選択</div>
                 <p class="explan">各商品によって取扱いサイズやカラーバリエーション、生地の厚みが異なります。</p>
                 <div class="item-list flex">
-                  <button class="step01-item active" data-product-id="united-athle-dry">
+                  <button class="step01-item" data-product-id="united-athle-dry">
                     <div class="img-box"><img src="images/common/form_item-img01.jpg" alt=""></div>
                     <p class="name">
                       <span>【United Athle】</span><br>
@@ -915,10 +915,9 @@
                   カラーとサイズ毎の枚数を選択してください。<br>
                   複数カラーをご希望の場合「カラーを追加」より追加できます。
                 </p>
-
                 <div class="block">
                   <div class="color-wrap">
-                    <p><span>商品カラー</span>　40clors</p>
+                    <p>商品カラー　<span class="color-count">0</span>clors</p>
                     <div class="flex">
                       <div class="select-wrap">
                         <select>
@@ -928,16 +927,14 @@
                       <a class="btn-chart" href="#">カラーチャートを確認</a>
                     </div>
                   </div><!-- /.color-wrap -->
-
                   <div class="size-wrap">
-                    <p><span>サイズ/枚数</span></p>
+                    <p>サイズ/枚数</p>
                     <div class="flex">
                       <!-- 動的に生成されます -->
                     </div>
                     <a class="btn-chart" href="#">サイズチャートを確認</a>
                   </div><!-- /.size-wrap -->
                 </div><!-- /.block -->
-
                 <div class="add-wrap"><button class="btn-add"><img src="images/common/icon_puls.svg"
                       alt="">カラーを追加</button></div>
               </div><!-- /.simu-step02 -->
@@ -985,76 +982,31 @@
             <div class="add-wrap"><button class="btn-add"><img src="images/common/icon_puls.svg" alt="">商品を追加</button>
             </div>
             <button class="btn-result">見積り結果を表示</button>
-
           </div><!-- /.simulation_wrap -->
 
           <div class="result-wrap" style="display: none;">
-
             <div class="result-arrow img-box"><img src="images/common/form_arrow.svg" alt=""></div>
-
             <div class="result-content">
               <div class="ttl">見積もり結果</div>
-
               <div class="block_wrap">
-                <div class="block item-info">
-                  <p class="name">United Athle　4.1オンス ドライアスレチック Tシャツ</p>
-                  <div class="group flex">
-                    <p class="color">カラー：<span>ホワイト</span></p>
-                    <div class="child">
-                      <div>
-                        <p class="size">サイズ：<span>L</span></p>
-                        <p class="quanntity">数量：<span>10枚</span></p>
-                        <p class="price"><span>5,560円</span></p>
-                      </div>
-                      <div>
-                        <p class="size">サイズ：<span>XL</span></p>
-                        <p class="quanntity">数量：<span>10枚</span></p>
-                        <p class="price"><span>5,560円</span></p>
-                      </div>
-                    </div>
-                  </div><!-- /.group -->
-                  <div class="group flex">
-                    <p class="color">カラー：<span>ブラック</span></p>
-                    <div class="child">
-                      <div>
-                        <p class="size">サイズ：<span>M</span></p>
-                        <p class="quanntity">数量：<span>5枚</span></p>
-                        <p class="price"><span>2,780円</span></p>
-                      </div>
-                    </div>
-                  </div><!-- /.group -->
-                  <div class="item-total flex">
-                    <p>25枚</p>
-                    <p>
-                      <span>13,900円</span>
-                    </p>
-                  </div>
-                </div><!-- /.block -->
-
-                <div class="block print-position">
-                  <p class="name">プリント箇所</p>
-                  <div class="group flex">
-                    <p>左胸/背面</p>
-                    <p><span>66,000円</span></p>
-                  </div>
-                </div><!-- /.block -->
-
-                <div class="block option">
-                  <p class="name">オプション</p>
-                  <div class="group flex">
-                    <p>袋詰め：あり（45円×枚数）</p>
-                    <p><span>1,125円</span></p>
-                  </div>
-                </div><!-- /.block -->
-
+                <div class="block item-info-container">
+                  <!-- JavaScriptで商品ごとの情報を生成 -->
+                </div>
+                <!-- プリント位置情報（動的に生成） -->
+                <div class="block print-position-container">
+                  <!-- JavaScriptでプリント位置の情報を生成 -->
+                </div>
+                <!-- オプション情報（動的に生成） -->
+                <div class="block option-container">
+                  <!-- JavaScriptでオプション情報を生成 -->
+                </div>
+                <!-- 合計金額（動的に生成） -->
                 <div class="total-price flex">
                   <p>合計金額<span>(税込)</span></p>
-                  <p class="price">81,025円</p>
+                  <p class="price">0円</p>
                 </div>
               </div>
-
-            </div><!-- /.result-content-->
-
+            </div>
           </div><!-- /.result-wrap -->
 
         </div><!-- /.inner -->

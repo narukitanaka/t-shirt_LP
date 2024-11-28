@@ -19,12 +19,6 @@ class FormController {
     this.bindColorAddition();
     this.bindProductAddition();
     this.bindCalculateButton();
-
-    // 初期状態でStep1の最初の商品を選択状態にする
-    const firstProduct = document.querySelector(".step01-item");
-    if (firstProduct) {
-      firstProduct.click();
-    }
   }
 
   // Step1: 商品選択の制御
@@ -35,6 +29,10 @@ class FormController {
         // 選択状態の更新
         productButtons.forEach((btn) => btn.classList.remove("active"));
         button.classList.add("active");
+
+        // Step2,3を表示（ここに追加）
+        document.querySelector(".simu-step02").style.display = "block";
+        document.querySelector(".simu-step03").style.display = "block";
 
         // 選択された商品に基づいてStep2を更新
         this.updateStep2Options(this.getProductIdFromButton(button));
@@ -79,7 +77,7 @@ class FormController {
 
     block.innerHTML = `
       <div class="color-wrap">
-        <p><span>商品カラー</span>　${product.colors.length}colors</p>
+        <p>商品カラー　${product.colors.length}colors</p>
         <div class="flex">
           <div class="select-wrap">
             <select>
@@ -94,7 +92,7 @@ class FormController {
         </div>
       </div>
       <div class="size-wrap">
-        <p><span>サイズ/枚数</span></p>
+        <p>サイズ/枚数</p>
         <div class="flex">
           ${product.sizes
             .map(
@@ -171,23 +169,27 @@ class FormController {
 
   // 商品コンテンツのHTML生成
   createProductContent() {
-    const content = document.createElement("div");
-    content.className = "simu-content";
-
-    const template = document.querySelector(".simu-content").cloneNode(true);
+    // 既存のsimu-contentをクローン
+    const content = document.querySelector(".simu-content").cloneNode(true);
 
     // 選択状態のリセット
-    template.querySelectorAll(".step01-item").forEach((item) => {
+    content.querySelectorAll(".step01-item").forEach((item) => {
       item.classList.remove("active");
     });
 
     // 入力値のリセット
-    template.querySelectorAll("input").forEach((input) => {
+    content.querySelectorAll("input").forEach((input) => {
       input.value = "";
     });
-    template.querySelectorAll("select").forEach((select) => {
+    content.querySelectorAll("select").forEach((select) => {
       select.selectedIndex = 0;
     });
+
+    // Step2,3を非表示に
+    const step2 = content.querySelector(".simu-step02");
+    const step3 = content.querySelector(".simu-step03");
+    if (step2) step2.style.display = "none";
+    if (step3) step3.style.display = "none";
 
     // 削除ボタンの追加
     const deleteBtn = document.createElement("button");
@@ -198,13 +200,12 @@ class FormController {
         content.remove();
       }
     });
-    template.appendChild(deleteBtn);
+    content.appendChild(deleteBtn);
 
     // イベントリスナーの再バインド
-    this.bindProductSelection(template);
-    this.bindColorAddition(template);
+    this.bindProductSelection(content);
+    this.bindColorAddition(content);
 
-    content.appendChild(template);
     return content;
   }
 
