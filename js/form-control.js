@@ -23,30 +23,27 @@ class FormController {
 
   // Step1: 商品選択の制御
   bindProductSelection(container = document) {
-    // containerパラメータを追加し、デフォルト値をdocumentに設定
     const productButtons = container.querySelectorAll(".step01-item");
     productButtons.forEach((button) => {
       button.addEventListener("click", (e) => {
-        // クリックされた商品が属するsimu-contentを特定
-        const simuContent = button.closest(".simu-content");
-
-        // この商品セクション内の商品ボタンの選択状態をリセット
-        simuContent.querySelectorAll(".step01-item").forEach((btn) => {
+        // 選択状態の更新（現在の商品グループ内のみ）
+        const currentSimuContent = button.closest(".simu-content");
+        currentSimuContent.querySelectorAll(".step01-item").forEach((btn) => {
           btn.classList.remove("active");
         });
         button.classList.add("active");
 
-        // この商品セクション内のStep2,3を表示
-        const step2 = simuContent.querySelector(".simu-step02");
-        const step3 = simuContent.querySelector(".simu-step03");
+        // Step2を表示（現在の商品グループのみ）
+        const step2 = currentSimuContent.querySelector(".simu-step02");
         if (step2) step2.style.display = "block";
+
+        // 共通のStep3を表示
+        const step3 = document.querySelector(".simu-step03");
         if (step3) step3.style.display = "block";
 
         // 選択された商品に基づいてStep2を更新
-        this.updateStep2Options(
-          this.getProductIdFromButton(button),
-          simuContent
-        );
+        const productId = this.getProductIdFromButton(button);
+        this.updateStep2Options(productId);
       });
     });
   }
@@ -58,12 +55,13 @@ class FormController {
   }
 
   // Step2: カラー・サイズオプションの更新
-  updateStep2Options(productId, simuContent) {
+  updateStep2Options(productId) {
+    // simuContentパラメータを削除
     const product = PRODUCTS[productId];
     if (!product) return;
 
-    // Step2内の既存のカラーブロックをクリア
-    const step2 = simuContent.querySelector(".simu-step02");
+    // querySelector(".simu-step02")の対象を修正
+    const step2 = document.querySelector(".simu-step02");
     const blocks = step2.querySelectorAll(".block");
     blocks.forEach((block) => block.remove());
 
@@ -177,8 +175,14 @@ class FormController {
 
   // 商品コンテンツのHTML生成
   createProductContent() {
-    // 既存のsimu-contentをクローン
+    // step1とstep2だけをクローン
     const content = document.querySelector(".simu-content").cloneNode(true);
+
+    // step3は含めない
+    const step3 = content.querySelector(".simu-step03");
+    if (step3) {
+      step3.remove();
+    }
 
     // 選択状態のリセット
     content.querySelectorAll(".step01-item").forEach((item) => {
@@ -189,32 +193,15 @@ class FormController {
     content.querySelectorAll("input").forEach((input) => {
       if (input.type === "number") {
         input.value = "";
-      } else if (input.type === "checkbox") {
-        input.checked = false;
       }
     });
     content.querySelectorAll("select").forEach((select) => {
       select.selectedIndex = 0;
     });
 
-    // チェックボックスのIDを一意にする
-    const timestamp = Date.now();
-    content
-      .querySelectorAll('.print-position input[type="checkbox"]')
-      .forEach((checkbox) => {
-        const newId = `print-${checkbox.value}-${timestamp}`;
-        const label = checkbox.nextElementSibling;
-        checkbox.id = newId;
-        if (label) {
-          label.setAttribute("for", newId);
-        }
-      });
-
-    // Step2,3を非表示に
+    // Step2を非表示に
     const step2 = content.querySelector(".simu-step02");
-    const step3 = content.querySelector(".simu-step03");
     if (step2) step2.style.display = "none";
-    if (step3) step3.style.display = "none";
 
     // 削除ボタンの追加
     const deleteBtn = document.createElement("button");
@@ -291,7 +278,7 @@ class FormController {
       }
     });
 
-    // プリント位置の収集を修正
+    // プリント位置と袋詰めの収集は共通のstep3から
     const printPositions = [];
     document
       .querySelectorAll('.print-position input[type="checkbox"]:checked')
@@ -299,7 +286,6 @@ class FormController {
         printPositions.push(checkbox.value);
       });
 
-    // 袋詰めの設定を収集
     const hasBagging = document.querySelector("#ari").checked;
 
     return { products, printPositions, hasBagging };
