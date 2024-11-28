@@ -4,6 +4,13 @@ import { EstimateCalculator } from "./estimate-calc.js";
 class FormController {
   constructor() {
     this.calculator = new EstimateCalculator();
+
+    // Step2,3を初期非表示に
+    const step2 = document.querySelector(".simu-step02");
+    const step3 = document.querySelector(".simu-step03");
+    if (step2) step2.style.display = "none";
+    if (step3) step3.style.display = "none";
+
     this.init();
   }
 
@@ -46,10 +53,20 @@ class FormController {
     const product = PRODUCTS[productId];
     if (!product) return;
 
+    // Step2,3を表示
+    document.querySelector(".simu-step02").style.display = "block";
+    document.querySelector(".simu-step03").style.display = "block";
+
     // 既存のカラーブロックをクリア
     const step2 = document.querySelector(".simu-step02");
     const blocks = step2.querySelectorAll(".block");
     blocks.forEach((block) => block.remove());
+
+    // カラー総数の更新
+    const colorCountText = document.querySelector(".color-wrap p");
+    if (colorCountText) {
+      colorCountText.innerHTML = `<span>商品カラー</span>　${product.colors.length}colors`;
+    }
 
     // 新しいカラーブロックを追加
     this.addNewColorBlock(step2, product);
@@ -62,7 +79,7 @@ class FormController {
 
     block.innerHTML = `
       <div class="color-wrap">
-        <p><span>商品カラー</span></p>
+        <p><span>商品カラー</span>　${product.colors.length}colors</p>
         <div class="flex">
           <div class="select-wrap">
             <select>
@@ -85,7 +102,7 @@ class FormController {
             <div class="box">
               <p>${size}</p>
               <div>
-                <input type="number" min="0" data-size="${size}">枚
+                <input type="number" min="0" value="0" data-size="${size}">枚
               </div>
             </div>
           `
