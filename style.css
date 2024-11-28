@@ -1169,7 +1169,7 @@ top
 .wrap_form .result-wrap .result-content .block .group p span {
   font-size: 1.8rem;
   font-weight: 500;
-  margin-left: 3rem;
+  margin-left: 2rem;
 }
 .wrap_form .result-wrap .result-content .block .group .child {
   flex-basis: 65%;
@@ -1179,7 +1179,7 @@ top
   justify-content: space-between;
 }
 .wrap_form .result-wrap .result-content .block .group .child div p {
-  flex-basis: 25%;
+  flex-basis: 27%;
 }
 .wrap_form .result-wrap .result-content .block .group .child div p:last-of-type {
   text-align: end;
@@ -1187,7 +1187,7 @@ top
 .wrap_form .result-wrap .result-content .block .item-total {
   justify-content: flex-end;
   align-items: center;
-  gap: 9rem;
+  gap: 11rem;
   padding-top: 1.5rem;
   border-top: 1px solid #aaa9ad;
   margin-left: 5rem;

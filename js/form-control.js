@@ -22,20 +22,31 @@ class FormController {
   }
 
   // Step1: 商品選択の制御
-  bindProductSelection() {
-    const productButtons = document.querySelectorAll(".step01-item");
+  bindProductSelection(container = document) {
+    // containerパラメータを追加し、デフォルト値をdocumentに設定
+    const productButtons = container.querySelectorAll(".step01-item");
     productButtons.forEach((button) => {
       button.addEventListener("click", (e) => {
-        // 選択状態の更新
-        productButtons.forEach((btn) => btn.classList.remove("active"));
+        // クリックされた商品が属するsimu-contentを特定
+        const simuContent = button.closest(".simu-content");
+
+        // この商品セクション内の商品ボタンの選択状態をリセット
+        simuContent.querySelectorAll(".step01-item").forEach((btn) => {
+          btn.classList.remove("active");
+        });
         button.classList.add("active");
 
-        // Step2,3を表示（ここに追加）
-        document.querySelector(".simu-step02").style.display = "block";
-        document.querySelector(".simu-step03").style.display = "block";
+        // この商品セクション内のStep2,3を表示
+        const step2 = simuContent.querySelector(".simu-step02");
+        const step3 = simuContent.querySelector(".simu-step03");
+        if (step2) step2.style.display = "block";
+        if (step3) step3.style.display = "block";
 
         // 選択された商品に基づいてStep2を更新
-        this.updateStep2Options(this.getProductIdFromButton(button));
+        this.updateStep2Options(
+          this.getProductIdFromButton(button),
+          simuContent
+        );
       });
     });
   }
@@ -47,21 +58,17 @@ class FormController {
   }
 
   // Step2: カラー・サイズオプションの更新
-  updateStep2Options(productId) {
+  updateStep2Options(productId, simuContent) {
     const product = PRODUCTS[productId];
     if (!product) return;
 
-    // Step2,3を表示
-    document.querySelector(".simu-step02").style.display = "block";
-    document.querySelector(".simu-step03").style.display = "block";
-
-    // 既存のカラーブロックをクリア
-    const step2 = document.querySelector(".simu-step02");
+    // Step2内の既存のカラーブロックをクリア
+    const step2 = simuContent.querySelector(".simu-step02");
     const blocks = step2.querySelectorAll(".block");
     blocks.forEach((block) => block.remove());
 
     // カラー総数の更新
-    const colorCountText = document.querySelector(".color-wrap p");
+    const colorCountText = step2.querySelector(".color-wrap p");
     if (colorCountText) {
       colorCountText.innerHTML = `<span>商品カラー</span>　${product.colors.length}colors`;
     }
@@ -136,21 +143,22 @@ class FormController {
   }
 
   // カラーの追加ボタンの制御
-  bindColorAddition() {
-    const addColorBtn = document.querySelector(".simu-step02 .btn-add");
-    if (addColorBtn) {
+  bindColorAddition(container = document) {
+    const addColorBtns = container.querySelectorAll(".simu-step02 .btn-add");
+    addColorBtns.forEach((addColorBtn) => {
       addColorBtn.addEventListener("click", () => {
-        const activeProduct = document.querySelector(".step01-item.active");
+        const simuContent = addColorBtn.closest(".simu-content");
+        const activeProduct = simuContent.querySelector(".step01-item.active");
         if (activeProduct) {
           const productId = this.getProductIdFromButton(activeProduct);
           const product = PRODUCTS[productId];
           if (product) {
-            const step2 = document.querySelector(".simu-step02");
+            const step2 = simuContent.querySelector(".simu-step02");
             this.addNewColorBlock(step2, product);
           }
         }
       });
-    }
+    });
   }
 
   // 商品の追加ボタンの制御
@@ -331,74 +339,96 @@ class FormController {
 
     let html = "";
 
-    // 商品情報の表示
-    result.breakdown.products.forEach((product) => {
-      html += `
-        <div class="block item-info">
-          <p class="name">${product.productName}</p>
-          <div class="group flex">
-            <p class="color">カラー：<span>${product.color}</span></p>
-            <div class="child">
-              ${product.sizes
-                .map(
-                  (size) => `
-                <div>
-                  <p class="size">サイズ：<span>${size.size}</span></p>
-                  <p class="quanntity">数量：<span>${size.quantity}枚</span></p>
-                  <p class="price"><span>${size.price.toLocaleString()}円</span></p>
-                </div>
-              `
-                )
-                .join("")}
-            </div>
-          </div>
-          <div class="item-total flex">
-            <p>${product.quantity}枚</p>
-            <p><span>${product.subtotal.toLocaleString()}円</span></p>
-          </div>
-        </div>
-      `;
-    });
+    // 商品情報の表示（simu-contentごとにまとめる）
+    const products = result.breakdown.products;
+    let currentProductIndex = 0;
+    const simuContents = document.querySelectorAll(".simu-content");
 
-    // プリント位置の表示
-    if (result.breakdown.printing.length > 0) {
-      html += `
-        <div class="block print-position">
-          <p class="name">プリント箇所</p>
-          <div class="group flex">
-            <p>${result.breakdown.printing.map((p) => p.position).join("/")}</p>
-            <p><span>${result.breakdown.printing
-              .reduce((sum, p) => sum + p.price, 0)
+    simuContents.forEach((content) => {
+      // この simu-content に関連する商品をまとめる
+      const productCount = content.querySelectorAll(".block").length;
+      const contentProducts = products.slice(
+        currentProductIndex,
+        currentProductIndex + productCount
+      );
+      currentProductIndex += productCount;
+
+      if (contentProducts.length > 0) {
+        html += `
+        <div class="block item-info">
+          <p class="name">${contentProducts[0].productName}</p>
+          ${contentProducts
+            .map(
+              (product) => `
+            <div class="group flex">
+              <p class="color">カラー：<span>${product.color}</span></p>
+              <div class="child">
+                ${product.sizes
+                  .map(
+                    (size) => `
+                  <div>
+                    <p class="size">サイズ：<span>${size.size}</span></p>
+                    <p class="quanntity">数量：<span>${
+                      size.quantity
+                    }枚</span></p>
+                    <p class="price"><span>${size.price.toLocaleString()}円</span></p>
+                  </div>
+                `
+                  )
+                  .join("")}
+              </div>
+            </div>
+          `
+            )
+            .join("")}
+          <div class="item-total flex">
+            <p>${contentProducts.reduce((sum, p) => sum + p.quantity, 0)}枚</p>
+            <p><span>${contentProducts
+              .reduce((sum, p) => sum + p.subtotal, 0)
               .toLocaleString()}円</span></p>
           </div>
         </div>
       `;
-    }
+      }
+    });
 
-    // 袋詰めオプションの表示
-    if (result.breakdown.bagging > 0) {
+    // プリント位置の表示（変更なし）
+    if (result.breakdown.printing.length > 0) {
       html += `
-        <div class="block option">
-          <p class="name">オプション</p>
-          <div class="group flex">
-            <p>袋詰め：あり（45円×${result.totalQuantity}枚）</p>
-            <p><span>${result.breakdown.bagging.toLocaleString()}円</span></p>
-          </div>
+      <div class="block print-position">
+        <p class="name">プリント箇所</p>
+        <div class="group flex">
+          <p>${result.breakdown.printing.map((p) => p.position).join("/")}</p>
+          <p><span>${result.breakdown.printing
+            .reduce((sum, p) => sum + p.price, 0)
+            .toLocaleString()}円</span></p>
         </div>
-      `;
-    }
-
-    // 合計金額の表示
-    html += `
-      <div class="total-price flex">
-        <p>合計金額<span>(税込)</span></p>
-        <p class="price">${result.total.toLocaleString()}円</p>
       </div>
     `;
+    }
+
+    // 袋詰めオプションの表示（変更なし）
+    if (result.breakdown.bagging > 0) {
+      html += `
+      <div class="block option">
+        <p class="name">オプション</p>
+        <div class="group flex">
+          <p>袋詰め：あり（45円×${result.totalQuantity}枚）</p>
+          <p><span>${result.breakdown.bagging.toLocaleString()}円</span></p>
+        </div>
+      </div>
+    `;
+    }
+
+    // 合計金額の表示（変更なし）
+    html += `
+    <div class="total-price flex">
+      <p>合計金額<span>(税込)</span></p>
+      <p class="price">${result.total.toLocaleString()}円</p>
+    </div>
+  `;
 
     resultContent.innerHTML = html;
-
-    // 結果エリアを表示
     document.querySelector(".result-wrap").style.display = "block";
   }
 }

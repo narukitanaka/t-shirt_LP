@@ -867,7 +867,7 @@ top
             span {
               font-size: 1.8rem;
               font-weight: 500;
-              margin-left: 3rem;
+              margin-left: 2rem;
             }
           }
           .child {
@@ -876,7 +876,7 @@ top
               display: flex;
               justify-content: space-between;
               p {
-                flex-basis: 25%;
+                flex-basis: 27%;
                 &:last-of-type {
                   text-align: end;
                 }
@@ -887,7 +887,7 @@ top
         .item-total {
           justify-content: flex-end;
           align-items: center;
-          gap: 9rem;
+          gap: 11rem;
           padding-top: 1.5rem;
           border-top: 1px solid #aaa9ad;
           margin-left: 5rem;
