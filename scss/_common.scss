@@ -1,0 +1,172 @@
+@use "variable" as v;
+/*************************************************
+common-style
+*************************************************/
+@mixin base_width {
+  margin: 0 auto;
+  width: 1200px;
+}
+// @extendでスタイルの継承
+// @mixinでステイルの定義
+// @includeでmixinの呼び出し
+
+// ブレイクポイント
+// PC基準でコーディングする場合
+$breakpoints: (
+  "sm": "screen and (max-width: 768px)",
+  //スマホ
+  "md": "screen and (max-width: 1000px)",
+  //タブレット
+  "ps": "screen and (max-width: 1200px)",
+  //PC小
+) !default;
+@mixin mq($breakpoint: sm) {
+  @media #{map-get($breakpoints , $breakpoint)} {
+    @content;
+  }
+}
+
+// スマホ基準でコーディングする場合
+// $breakpoints: (
+//   "md": "screen and (min-width: 600px)", //タブレット
+//   "lg": "screen and (min-width: 1025px)", //パソコン
+// ) !default;
+// @mixin mq($breakpoint: lg) {
+//   @media #{map-get($breakpoints , $breakpoint)} {
+//     @content;
+//   }
+// }
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Zen Kaku Gothic New", "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "游ゴシック", "Yu Gothic",
+    "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+}
+
+.img-box {
+  img {
+    width: 100%;
+  }
+}
+
+.obj-fit {
+  img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  @include mq(md) {
+    width: 80%;
+    max-width: 1000px;
+  }
+  @include mq() {
+    width: 90%;
+    max-width: 750px;
+  }
+}
+
+h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+h3,
+p,
+li,
+dt,
+dd,
+th,
+td,
+a {
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 1.7;
+  @include mq() {
+    font-size: 1.5rem;
+  }
+}
+
+.out {
+  font-family: v.$font-out;
+}
+
+.ttl-wrap {
+  position: relative;
+  margin-bottom: 6rem;
+  text-align: center;
+  z-index: 0;
+  div {
+    position: relative;
+    display: inline-block;
+    font-family: v.$font-out;
+    font-size: 4.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    &::before {
+      content: "";
+      width: 120%;
+      height: 2.7rem;
+      background: v.$grade01;
+      position: absolute;
+      top: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+    }
+  }
+  h2 {
+    span {
+      font-size: 2rem;
+    }
+  }
+}
+
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+// /iOSでのデフォルトスタイルをリセット /
+input[type="submit"],
+input[type="button"] {
+  border-radius: 0;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  appearance: button;
+  border: none;
+  box-sizing: border-box;
+  &::-webkit-search-decoration {
+    display: none;
+  }
+  &:focus {
+    outline-offset: -2px;
+  }
+}
+
+.wrap-hidden {
+  overflow: hidden;
+  &.visible {
+    overflow: visible;
+  }
+}

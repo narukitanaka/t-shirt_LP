@@ -1,0 +1,26 @@
+<svg width="380" height="55" viewBox="0 0 380 55" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.5" y="0.5" width="22.75" height="22.75" fill="white" stroke="#9A9A9A"/>
+<path d="M30.1875 0.5H52.9375V23.25H30.1875V0.5Z" fill="#DED1C2" stroke="#9A9A9A"/>
+<rect x="59.875" y="0.5" width="22.75" height="22.75" fill="#343434" stroke="#9A9A9A"/>
+<rect x="89.5625" y="0.5" width="22.75" height="22.75" fill="black" stroke="#9A9A9A"/>
+<rect x="119.25" y="0.5" width="22.75" height="22.75" fill="#989BA0" stroke="#9A9A9A"/>
+<rect x="178.625" y="0.5" width="22.75" height="22.75" fill="#6B0725" stroke="#9A9A9A"/>
+<path d="M208.312 0.5H231.062V23.25H208.312V0.5Z" fill="#FDDFE0" stroke="#9A9A9A"/>
+<rect x="238" y="0.5" width="22.75" height="22.75" fill="#D80066" stroke="#9A9A9A"/>
+<rect x="267.688" y="0.5" width="22.75" height="22.75" fill="#EC5F02" stroke="#9A9A9A"/>
+<rect x="297.375" y="0.5" width="22.75" height="22.75" fill="#FFF152" stroke="#9A9A9A"/>
+<rect x="327.062" y="0.5" width="22.75" height="22.75" fill="#FFD600" stroke="#9A9A9A"/>
+<rect x="356.75" y="0.5" width="22.75" height="22.75" fill="#AAE202" stroke="#9A9A9A"/>
+<path d="M0.5 30.1875H23.25V52.9375H0.5V30.1875Z" fill="#01853B" stroke="#9A9A9A"/>
+<rect x="30.1875" y="30.1875" width="22.75" height="22.75" fill="#4F592D" stroke="#9A9A9A"/>
+<path d="M59.875 30.1875H82.625V52.9375H59.875V30.1875Z" fill="#B7E0F6" stroke="#9A9A9A"/>
+<rect x="89.5" y="30.5" width="22.75" height="22.75" fill="#029DD7" stroke="#9A9A9A"/>
+<rect x="119.25" y="30.1875" width="22.75" height="22.75" fill="#054191" stroke="#9A9A9A"/>
+<path d="M148.938 30.1875H171.688V52.9375H148.938V30.1875Z" fill="#01092E" stroke="#9A9A9A"/>
+<rect x="178.625" y="30.1875" width="22.75" height="22.75" fill="#CDB5D1" stroke="#9A9A9A"/>
+<rect x="208.5" y="30.5" width="22.75" height="22.75" fill="#5B0D78" stroke="#9A9A9A"/>
+<path d="M238.5 30.5H261.25V53.25H238.5V30.5Z" fill="#D49F90" stroke="#9A9A9A"/>
+<rect x="268.188" y="30.5" width="22.75" height="22.75" fill="#E9E2D3" stroke="#9A9A9A"/>
+<rect x="298.062" y="30.8125" width="22.75" height="22.75" fill="#868BC1" stroke="#9A9A9A"/>
+<rect x="148.938" y="0.5" width="22.75" height="22.75" fill="#CF101A" stroke="#9A9A9A"/>
+</svg>
