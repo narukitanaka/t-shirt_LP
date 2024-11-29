@@ -1028,6 +1028,53 @@
             </div>
           </div><!-- /.result-wrap -->
 
+          <div class="contact-wrap" style="display: none;">
+            <h2>お客さま情報の入力</h2>
+            <form action="mail.php" method="post" enctype="multipart/form-data">
+              <input type="hidden" id="estimateResult" name="estimateResult" value="">
+              <table>
+                <tr>
+                  <th><label for="your_name">お名前</label></th>
+                  <td>
+                    <input type="text" id="your_name" name="お名前" placeholder="例）山田 太郎" required>
+                  </td>
+                </tr>
+                <tr>
+                  <th><label for="hurigana">ふりがな</label></th>
+                  <td>
+                    <input type="text" id="hurigana" name="ふりがな" placeholder="例）やまだ たろう" required>
+                  </td>
+                </tr>
+                <tr>
+                  <th><label for="company">会社名</label></th>
+                  <td>
+                    <input type="text" id="company" name="会社名" placeholder="例）株式会社〇〇">
+                  </td>
+                </tr>
+                <tr>
+                  <th><label for="your_mail">メールアドレス</label></th>
+                  <td>
+                    <input type="email" id="your_mail" name="メールアドレス" placeholder="例）you@example.com" required>
+                  </td>
+                </tr>
+                <tr>
+                  <th><label for="your_tel">電話番号</label></th>
+                  <td>
+                    <input type="tel" id="your_tel" name="電話番号" placeholder="例）090-1234-5678" required>
+                  </td>
+                </tr>
+                <tr>
+                  <th><label for="form_textarea">問い合わせ内容</label></th>
+                  <td>
+                    <textarea name="問い合わせ内容" id="form_textarea" cols="30" rows="8" maxlength="500"
+                      placeholder="こちらにお問い合わせ内容を入力してください。"></textarea>
+                  </td>
+                </tr>
+              </table>
+              <div class="btn-submit"><input type="submit" value="送信する" name="送信" /></div>
+            </form>
+          </div>
+
         </div><!-- /.inner -->
       </section><!-- /.wrap_form -->
 

@@ -380,72 +380,69 @@ class FormController {
 
       if (contentProducts.length > 0) {
         html += `
-          <div class="block item-info">
-            <p class="name">${contentProducts[0].productName}</p>
-            ${contentProducts
-              .map(
-                (product) => `
-              <div class="group flex">
-                <p class="color">カラー：<span>${product.color}</span></p>
-                <div class="child">
-                  ${product.sizes
-                    .map(
-                      (size) => `
-                    <div>
-                      <p class="size">サイズ：<span>${size.size}</span></p>
-                      <p class="quanntity">数量：<span>${
-                        size.quantity
-                      }枚</span></p>
-                      <p class="price"><span>${size.price.toLocaleString()}円</span></p>
-                    </div>
-                  `
-                    )
-                    .join("")}
-                </div>
+        <div class="block item-info">
+          <p class="name">${contentProducts[0].productName}</p>
+          ${contentProducts
+            .map(
+              (product) => `
+            <div class="group flex">
+              <p class="color">カラー：<span>${product.color}</span></p>
+              <div class="child">
+                ${product.sizes
+                  .map(
+                    (size) => `
+                  <div>
+                    <p class="size">サイズ：<span>${size.size}</span></p>
+                    <p class="quanntity">数量：<span>${
+                      size.quantity
+                    }枚</span></p>
+                    <p class="price"><span>${size.price.toLocaleString()}円</span></p>
+                  </div>
+                `
+                  )
+                  .join("")}
               </div>
-            `
-              )
-              .join("")}
-            <div class="item-total flex">
-              <p>${contentProducts.reduce(
-                (sum, p) => sum + p.quantity,
-                0
-              )}枚</p>
-              <p><span>${contentProducts
-                .reduce((sum, p) => sum + p.subtotal, 0)
-                .toLocaleString()}円</span></p>
             </div>
+          `
+            )
+            .join("")}
+          <div class="item-total flex">
+            <p>${contentProducts.reduce((sum, p) => sum + p.quantity, 0)}枚</p>
+            <p><span>${contentProducts
+              .reduce((sum, p) => sum + p.subtotal, 0)
+              .toLocaleString()}円</span></p>
           </div>
-        `;
+        </div>
+      `;
       }
     });
 
     // プリント位置の表示
     if (result.breakdown.printing.length > 0) {
       html += `
-        <div class="block print-position">
-          <p class="name">プリント箇所</p>
-          <div class="group flex">
-            <p>${result.breakdown.printing.map((p) => p.position).join("/")}</p>
-            <p><span>${result.breakdown.printing
-              .reduce((sum, p) => sum + p.price, 0)
-              .toLocaleString()}円</span></p>
-          </div>
+      <div class="block print-position">
+        <p class="name">プリント箇所</p>
+        <div class="group flex">
+          <p>${result.breakdown.printing.map((p) => p.position).join("/")}</p>
+          <p><span>${result.breakdown.printing
+            .reduce((sum, p) => sum + p.price, 0)
+            .toLocaleString()}円</span></p>
         </div>
-      `;
+      </div>
+    `;
     }
 
     // 袋詰めオプションの表示
     if (result.breakdown.bagging > 0) {
       html += `
-        <div class="block option">
-          <p class="name">オプション</p>
-          <div class="group flex">
-            <p>袋詰め：あり（45円×${result.totalQuantity}枚）</p>
-            <p><span>${result.breakdown.bagging.toLocaleString()}円</span></p>
-          </div>
+      <div class="block option">
+        <p class="name">オプション</p>
+        <div class="group flex">
+          <p>袋詰め：あり（45円×${result.totalQuantity}枚）</p>
+          <p><span>${result.breakdown.bagging.toLocaleString()}円</span></p>
         </div>
-      `;
+      </div>
+    `;
     }
 
     // 合計金額の表示
@@ -456,8 +453,64 @@ class FormController {
       </div>
     `;
 
+    // 結果をHTMLに反映
     resultContent.innerHTML = html;
     document.querySelector(".result-wrap").style.display = "block";
+
+    // お問い合わせフォームを表示
+    document.querySelector(".contact-wrap").style.display = "block";
+
+    // 見積り結果を隠しフィールドに格納
+    const estimateResultText = this.formatEstimateResult(result);
+    const hiddenField = document.querySelector("#estimateResult");
+    if (hiddenField) {
+      hiddenField.value = estimateResultText;
+    }
+  }
+
+  formatEstimateResult(result) {
+    let text = "＜見積り内容＞\n\n";
+
+    // 商品情報
+    result.breakdown.products.forEach((product) => {
+      text += `【商品】${product.productName}\n`;
+      text += `・カラー：${product.color}\n`;
+
+      // サイズと数量
+      product.sizes.forEach((size) => {
+        text += `・${size.size}サイズ：${
+          size.quantity
+        }枚（${size.price.toLocaleString()}円）\n`;
+      });
+
+      text += `・小計：${product.subtotal.toLocaleString()}円\n\n`;
+    });
+
+    // プリント箇所
+    if (result.breakdown.printing.length > 0) {
+      text += "【プリント箇所】\n";
+      result.breakdown.printing.forEach((p) => {
+        text += `・${p.position}：${p.price.toLocaleString()}円\n`;
+      });
+      text += `・小計：${result.breakdown.printing
+        .reduce((sum, p) => sum + p.price, 0)
+        .toLocaleString()}円\n\n`;
+    }
+
+    // 袋詰めオプション
+    text += "【オプション】\n";
+    if (result.breakdown.bagging > 0) {
+      text += `・袋詰め：あり（${
+        result.totalQuantity
+      }枚 × 45円 = ${result.breakdown.bagging.toLocaleString()}円）\n\n`;
+    } else {
+      text += `・袋詰め：なし（ひとまとめにして梱包）\n\n`;
+    }
+
+    // 合計金額
+    text += `【合計金額】${result.total.toLocaleString()}円（税込）`;
+
+    return text;
   }
 }
 
