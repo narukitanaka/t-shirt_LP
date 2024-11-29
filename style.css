@@ -1359,6 +1359,73 @@ top
   left: 10rem;
 }
 
+.wrap_thanks {
+  padding: 15rem 20rem;
+  background: url(../images/common/form_bg.svg) no-repeat top/contain;
+}
+.wrap_thanks h2 {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 6rem;
+}
+.wrap_thanks .text {
+  text-align: center;
+  line-height: 2;
+  margin-bottom: 3rem;
+}
+.wrap_thanks .contact-tel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5rem;
+  background-color: #192130;
+  max-width: 60rem;
+  padding: 4rem 2rem;
+  margin: 6rem auto 4rem;
+}
+.wrap_thanks .contact-tel p,
+.wrap_thanks .contact-tel a {
+  color: #fff;
+}
+.wrap_thanks .contact-tel .txt {
+  font-size: 1.8rem;
+}
+.wrap_thanks .contact-tel a {
+  display: flex;
+  font-size: 2.4rem;
+  line-height: 1;
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+.wrap_thanks .contact-tel a img {
+  margin-top: 2px;
+}
+.wrap_thanks .contact-tel p {
+  text-align: center;
+  font-size: 1.2rem;
+  letter-spacing: 0.6px;
+}
+.wrap_thanks .btn-wrap {
+  text-align: center;
+}
+.wrap_thanks .btn-wrap .btn-prev {
+  position: relative;
+  font-weight: 700;
+  text-align: center;
+  color: #ff5906;
+}
+.wrap_thanks .btn-wrap .btn-prev::before {
+  content: "";
+  width: 10px;
+  aspect-ratio: 1/1;
+  background: linear-gradient(135deg, rgb(232, 121, 20) 0%, rgb(255, 89, 6) 100%);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -2rem;
+}
+
 /**
  * Swiper 8.1.6
  * Most modern mobile touch slider and framework with hardware accelerated transitions

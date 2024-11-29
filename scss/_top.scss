@@ -1071,3 +1071,69 @@ top
     }
   }
 }
+.wrap_thanks {
+  padding: 15rem 020rem;
+  background: url(../images/common/form_bg.svg) no-repeat top/contain;
+  h2 {
+    font-size: 2.4rem;
+    text-align: center;
+    margin-bottom: 6rem;
+  }
+  .text {
+    text-align: center;
+    line-height: 2;
+    margin-bottom: 3rem;
+  }
+  .contact-tel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5rem;
+    background-color: v.$sub-color01;
+    max-width: 60rem;
+    padding: 4rem 2rem;
+    margin: 6rem auto 4rem;
+    p,
+    a {
+      color: #fff;
+    }
+    .txt {
+      font-size: 1.8rem;
+    }
+    a {
+      display: flex;
+      font-size: 2.4rem;
+      line-height: 1;
+      letter-spacing: 2px;
+      font-weight: 700;
+      img {
+        margin-top: 2px;
+      }
+    }
+    p {
+      text-align: center;
+      font-size: 1.2rem;
+      letter-spacing: 0.6px;
+    }
+  }
+  .btn-wrap {
+    text-align: center;
+    .btn-prev {
+      position: relative;
+      font-weight: 700;
+      text-align: center;
+      color: v.$sub-color02;
+      &::before {
+        content: "";
+        width: 10px;
+        aspect-ratio: 1/1;
+        background: v.$grade01;
+        border-radius: 50%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -2rem;
+      }
+    }
+  }
+}
