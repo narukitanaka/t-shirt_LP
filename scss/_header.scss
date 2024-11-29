@@ -18,15 +18,7 @@ header {
     align-items: center;
   }
   .logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 12rem;
-    aspect-ratio: 1/0.3;
-    background-color: #fff;
-    a {
-      color: v.$main-txt;
-    }
+    width: 18rem;
   }
   .flex {
     gap: 5.5rem;

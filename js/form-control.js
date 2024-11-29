@@ -469,7 +469,7 @@ class FormController {
   }
 
   formatEstimateResult(result) {
-    let text = "＜見積り内容＞\n\n";
+    let text = "\n\n";
 
     // 商品情報
     result.breakdown.products.forEach((product) => {
@@ -483,7 +483,7 @@ class FormController {
         }枚（${size.price.toLocaleString()}円）\n`;
       });
 
-      text += `・小計：${product.subtotal.toLocaleString()}円\n\n`;
+      text += `・小計：${product.subtotal.toLocaleString()}円\n`;
     });
 
     // プリント箇所
@@ -502,13 +502,13 @@ class FormController {
     if (result.breakdown.bagging > 0) {
       text += `・袋詰め：あり（${
         result.totalQuantity
-      }枚 × 45円 = ${result.breakdown.bagging.toLocaleString()}円）\n\n`;
+      }枚 × 45円 = ${result.breakdown.bagging.toLocaleString()}円）\n`;
     } else {
       text += `・袋詰め：なし（ひとまとめにして梱包）\n\n`;
     }
 
     // 合計金額
-    text += `【合計金額】${result.total.toLocaleString()}円（税込）`;
+    text += `【合計金額】${result.total.toLocaleString()}円（税込）\n\n`;
 
     return text;
   }

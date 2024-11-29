@@ -245,15 +245,7 @@ header .header-inner {
   align-items: center;
 }
 header .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 12rem;
-  aspect-ratio: 1/0.3;
-  background-color: #fff;
-}
-header .logo a {
-  color: #111;
+  width: 18rem;
 }
 header .flex {
   gap: 5.5rem;
@@ -308,7 +300,7 @@ footer
 *************************************************/
 footer {
   padding: 6rem 0 3rem;
-  background: url(../images/common/footer_bg.jpg) no-repeat center/cover;
+  background: url(images/common/footer_bg.jpg) no-repeat center/cover;
 }
 footer p,
 footer h5 {
@@ -317,14 +309,7 @@ footer h5 {
   color: #fff;
 }
 footer .logo {
-  width: 150px;
-  aspect-ratio: 1/0.3;
-  background-color: #fff;
-  font-size: 1.6rem;
-  color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 25rem;
   margin-bottom: 3.7rem;
 }
 footer .flex {
@@ -343,11 +328,14 @@ top
   position: relative;
   width: 100vw;
   height: 100svh;
-  background: url(../images/common/mv_pc.png) no-repeat right/contain;
+  min-height: 80rem;
+  background: url(images/common/mv_pc.png) no-repeat top right/cover;
+  margin-left: 4.1666666667vw;
+  border-bottom-left-radius: 15rem;
 }
 .mv .mv-content {
-  padding-top: 13.8888888889vw;
-  padding-left: 8.4027777778vw;
+  padding-top: 13.1944444444vw;
+  padding-left: 4.1666666667vw;
 }
 .mv .mv-content .subttl-wrap {
   display: inline-block;
@@ -376,23 +364,21 @@ top
   font-weight: 700;
   letter-spacing: 1.5px;
   color: #fff;
-  margin-bottom: 4.5rem;
+  margin-bottom: 3.4rem;
   filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
 }
 .mv .mv-content .logo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 300px;
-  aspect-ratio: 1/0.3;
-  background-color: #fff;
   font-size: 2rem;
   font-weight: 500;
+  color: #fff;
+}
+.mv .mv-content .logo span {
+  font-size: 4rem;
 }
 .mv .gekkeizyu {
   width: 60rem;
   position: absolute;
-  left: 8.4027777778vw;
+  left: 4.1666666667vw;
   bottom: 7.3rem;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
@@ -471,7 +457,7 @@ top
 .wrap_service {
   position: relative;
   padding: 27rem 0 29.6rem;
-  background: url(../images/common/service_bg01.svg) no-repeat top/contain, url(../images/common/service_bg02.svg) no-repeat bottom/contain, #f3f2f7;
+  background: url(images/common/service_bg01.svg) no-repeat top/contain, url(images/common/service_bg02.svg) no-repeat bottom/contain, #f3f2f7;
 }
 .wrap_service .ttl-wrap {
   margin-bottom: 7rem;
@@ -637,7 +623,7 @@ top
   content: "";
   width: 14px;
   aspect-ratio: 1/0.55;
-  background: url(../images/common/icon-arrow01_vertical.svg) no-repeat center/contain;
+  background: url(images/common/icon-arrow01_vertical.svg) no-repeat center/contain;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -674,7 +660,7 @@ top
 .wrap_flow {
   position: relative;
   padding: 11.7rem 0 30rem;
-  background: url(../images/common/flow_bg.svg) no-repeat bottom/contain, linear-gradient(135deg, rgb(246, 237, 221) 0%, rgb(255, 255, 255) 100%);
+  background: url(images/common/flow_bg.svg) no-repeat bottom/contain, linear-gradient(135deg, rgb(246, 237, 221) 0%, rgb(255, 255, 255) 100%);
 }
 .wrap_flow::before {
   position: absolute;
@@ -683,7 +669,7 @@ top
   content: "";
   width: 100%;
   aspect-ratio: 1/0.15;
-  background: url(../images/common/lineup_bg.svg) no-repeat center/contain;
+  background: url(images/common/lineup_bg.svg) no-repeat center/contain;
 }
 .wrap_flow .ttl-wrap {
   margin-bottom: 7rem;
@@ -700,7 +686,7 @@ top
   content: "";
   width: 15.35rem;
   aspect-ratio: 1/4.39;
-  background: url(../images/common/flow_line.svg) no-repeat center/contain;
+  background: url(images/common/flow_line.svg) no-repeat center/contain;
   position: absolute;
   top: 11.5rem;
   left: 46.65rem;
@@ -789,7 +775,7 @@ top
   right: 2rem;
   width: 2.2rem;
   aspect-ratio: 1/0.55;
-  background: url(../images/common/icon-arrow01.svg) no-repeat center/contain;
+  background: url(images/common/icon-arrow01.svg) no-repeat center/contain;
 }
 .wrap_flow .block .box:nth-of-type(2) {
   max-height: 22.4rem;
@@ -849,7 +835,7 @@ top
   position: relative;
   margin-top: -1px;
   padding: 4rem 0 13.3rem;
-  background: url(../images/common/faq_bg.svg) no-repeat top/cover;
+  background: url(images/common/faq_bg.svg) no-repeat top/cover;
 }
 .wrap_faq .ttl-wrap div {
   color: #fff;
@@ -887,7 +873,7 @@ top
   content: "";
   width: 16px;
   aspect-ratio: 1/0.55;
-  background: url(../images/common/icon-arrow01_vertical.svg) no-repeat center/contain;
+  background: url(images/common/icon-arrow01_vertical.svg) no-repeat center/contain;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -905,7 +891,7 @@ top
 .wrap_form {
   margin-top: -1px;
   padding: 16.8rem 0 17rem;
-  background: url(../images/common/form_bg.svg) no-repeat top/contain;
+  background: url(images/common/form_bg.svg) no-repeat top/contain;
 }
 .wrap_form .txt {
   text-align: center;
@@ -956,7 +942,7 @@ top
   content: "";
   width: 13px;
   aspect-ratio: 1/0.55;
-  background: url(../images/common/icon-arrow01_vertical_bl.svg) no-repeat center/contain;
+  background: url(images/common/icon-arrow01_vertical_bl.svg) no-repeat center/contain;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -981,7 +967,7 @@ top
   content: "";
   width: 2.4rem;
   aspect-ratio: 1/1.08;
-  background: url(../images/common/icon_pdf.svg) no-repeat center/contain;
+  background: url(images/common/icon_pdf.svg) no-repeat center/contain;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -993,7 +979,7 @@ top
   right: 0rem;
   width: 3rem;
   aspect-ratio: 1/1;
-  background: url(../images/common/icon-delete.svg) no-repeat center/contain;
+  background: url(images/common/icon-delete.svg) no-repeat center/contain;
 }
 .wrap_form .simulation_wrap .simu-content .simu-step01,
 .wrap_form .simulation_wrap .simu-content .simu-step02,
@@ -1072,7 +1058,7 @@ top
   right: 0rem;
   width: 3rem;
   aspect-ratio: 1/1;
-  background: url(../images/common/icon-delete.svg) no-repeat center/contain;
+  background: url(images/common/icon-delete.svg) no-repeat center/contain;
 }
 .wrap_form .simulation_wrap .simu-content .simu-step02 .block .color-wrap p,
 .wrap_form .simulation_wrap .simu-content .simu-step02 .block .size-wrap p {
@@ -1361,7 +1347,7 @@ top
 
 .wrap_thanks {
   padding: 15rem 20rem;
-  background: url(../images/common/form_bg.svg) no-repeat top/contain;
+  background: url(images/common/form_bg.svg) no-repeat top/contain;
 }
 .wrap_thanks h2 {
   font-size: 2.4rem;
