@@ -37,13 +37,29 @@ class FormController {
         const step2 = currentSimuContent.querySelector(".simu-step02");
         if (step2) step2.style.display = "block";
 
-        // 共通のStep3を表示
-        const step3 = document.querySelector(".simu-step03");
-        if (step3) step3.style.display = "block";
+        // 商品追加ボタンを表示
+        const addProductButton = document.querySelector(
+          ".simulation_wrap > .add-wrap"
+        );
+        if (addProductButton) {
+          addProductButton.style.display = "block";
+        }
 
-        // 選択された商品に基づいてStep2を更新
+        // Step3を含むsimu-content要素とstep3自体を表示
+        const step3Content = document.querySelector(
+          ".simu-content:last-of-type"
+        );
+        if (step3Content) {
+          step3Content.style.display = "block";
+          const step3 = step3Content.querySelector(".simu-step03");
+          if (step3) {
+            step3.style.display = "block";
+          }
+        }
+
+        // 選択された商品に基づいてStep2を更新（currentSimuContentを渡す）
         const productId = this.getProductIdFromButton(button);
-        this.updateStep2Options(productId);
+        this.updateStep2Options(productId, currentSimuContent);
       });
     });
   }
@@ -55,13 +71,15 @@ class FormController {
   }
 
   // Step2: カラー・サイズオプションの更新
-  updateStep2Options(productId) {
-    // simuContentパラメータを削除
+  updateStep2Options(productId, currentSimuContent) {
+    // currentSimuContentパラメータを追加
     const product = PRODUCTS[productId];
     if (!product) return;
 
-    // querySelector(".simu-step02")の対象を修正
-    const step2 = document.querySelector(".simu-step02");
+    // 現在の商品のstep2を取得
+    const step2 = currentSimuContent.querySelector(".simu-step02");
+    if (!step2) return;
+
     const blocks = step2.querySelectorAll(".block");
     blocks.forEach((block) => block.remove());
 
@@ -76,54 +94,54 @@ class FormController {
   }
 
   // カラーブロックのHTML生成
-  createColorBlock(product) {
+  createColorBlock(product, isAdditional = false) {
     const block = document.createElement("div");
     block.className = "block";
 
     block.innerHTML = `
-      <div class="color-wrap">
-        <p>商品カラー　${product.colors.length}colors</p>
-        <div class="flex">
-          <div class="select-wrap">
-            <select>
-              <option disabled selected value>選択してください</option>
-              ${product.colors
-                .map((color) => `<option value="${color}">${color}</option>`)
-                .join("")}
-            </select>
-          </div>
-          <button class="delete-block">削除</button>
-          <a class="btn-chart" href="#">カラーチャートを確認</a>
+    ${isAdditional ? '<button class="delete-block"></button>' : ""}
+    <div class="color-wrap">
+      <p>商品カラー　${product.colors.length}colors</p>
+      <div class="flex">
+        <div class="select-wrap">
+          <select>
+            <option disabled selected value>選択してください</option>
+            ${product.colors
+              .map((color) => `<option value="${color}">${color}</option>`)
+              .join("")}
+          </select>
         </div>
+        <a class="btn-chart" href="#">カラーチャートを確認</a>
       </div>
-      <div class="size-wrap">
-        <p>サイズ/枚数</p>
-        <div class="flex">
-          ${product.sizes
-            .map(
-              (size) => `
-            <div class="box">
-              <p>${size}</p>
-              <div>
-                <input type="number" min="0" value="0" data-size="${size}">枚
-              </div>
+    </div>
+    <div class="size-wrap">
+      <p>サイズ/枚数</p>
+      <div class="flex">
+        ${product.sizes
+          .map(
+            (size) => `
+          <div class="box">
+            <p>${size}</p>
+            <div>
+              <input type="number" min="0" value="0" data-size="${size}">枚
             </div>
-          `
-            )
-            .join("")}
-        </div>
-        <a class="btn-chart" href="#">サイズチャートを確認</a>
+          </div>
+        `
+          )
+          .join("")}
       </div>
-    `;
+      <a class="btn-chart" href="#">サイズチャートを確認</a>
+    </div>
+  `;
 
-    // 削除ボタンの制御
-    const deleteBtn = block.querySelector(".delete-block");
-    if (deleteBtn) {
-      deleteBtn.addEventListener("click", () => {
-        if (document.querySelectorAll(".block").length > 1) {
+    // 追加ブロックの場合のみ削除ボタンの制御を追加
+    if (isAdditional) {
+      const deleteBtn = block.querySelector(".delete-block");
+      if (deleteBtn) {
+        deleteBtn.addEventListener("click", () => {
           block.remove();
-        }
-      });
+        });
+      }
     }
 
     return block;
@@ -131,7 +149,10 @@ class FormController {
 
   // カラーブロックの追加
   addNewColorBlock(container, product) {
-    const block = this.createColorBlock(product);
+    // 最初のブロック追加時はisAdditional = false
+    const isFirstBlock = container.querySelectorAll(".block").length === 0;
+    const block = this.createColorBlock(product, !isFirstBlock);
+
     const addButton = container.querySelector(".add-wrap");
     if (addButton) {
       container.insertBefore(block, addButton);
@@ -206,7 +227,7 @@ class FormController {
     // 削除ボタンの追加
     const deleteBtn = document.createElement("button");
     deleteBtn.className = "delete-product";
-    deleteBtn.textContent = "この商品を削除";
+    deleteBtn.textContent = "";
     deleteBtn.addEventListener("click", () => {
       if (document.querySelectorAll(".simu-content").length > 1) {
         content.remove();

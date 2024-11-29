@@ -606,9 +606,8 @@ top
     padding: 5rem 0;
     background-color: v.$sub-color03;
     .add-wrap {
-      display: flex;
-      justify-content: center;
       .btn-add {
+        width: 100%;
         font-size: 1.8rem;
         font-weight: 500;
         color: v.$sub-color02;
@@ -622,6 +621,7 @@ top
       }
     }
     .simu-content {
+      position: relative;
       padding: 3rem 4rem;
       width: 90%;
       max-width: 92rem;
@@ -629,6 +629,11 @@ top
       background-color: #fff;
       border-radius: 5px;
       box-shadow: v.$shadow05;
+      overflow: hidden;
+      &:nth-child(n + 2) {
+        margin-top: 6rem;
+        padding-top: 5rem;
+      }
       input,
       select {
         font-size: 1.6rem;
@@ -675,10 +680,19 @@ top
           right: 2.4rem;
         }
       }
+      .delete-product {
+        position: absolute;
+        top: 0rem;
+        right: 0rem;
+        width: 3rem;
+        aspect-ratio: 1/1;
+        background: url(../images/common/icon-delete.svg) no-repeat
+          center/contain;
+      }
       .simu-step01,
       .simu-step02,
       .simu-step03 {
-        margin-bottom: 8rem;
+        margin-bottom: 2rem;
         .ttl {
           font-size: 2.4rem;
           font-weight: 500;
@@ -732,11 +746,25 @@ top
         }
       }
       .simu-step02 {
+        margin-top: 8rem;
         .block {
+          position: relative;
           padding: 2.5rem 2rem;
           border: 2px solid v.$sub-color01;
           border-radius: 5px;
           margin-bottom: 2rem;
+          &:nth-child(n + 2) {
+            margin-top: 4rem;
+          }
+          .delete-block {
+            position: absolute;
+            top: 0rem;
+            right: 0rem;
+            width: 3rem;
+            aspect-ratio: 1/1;
+            background: url(../images/common/icon-delete.svg) no-repeat
+              center/contain;
+          }
           .color-wrap,
           .size-wrap {
             p {

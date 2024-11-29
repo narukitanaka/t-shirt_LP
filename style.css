@@ -915,11 +915,8 @@ top
   padding: 5rem 0;
   background-color: #f3f2f7;
 }
-.wrap_form .simulation_wrap .add-wrap {
-  display: flex;
-  justify-content: center;
-}
 .wrap_form .simulation_wrap .add-wrap .btn-add {
+  width: 100%;
   font-size: 1.8rem;
   font-weight: 500;
   color: #ff5906;
@@ -932,6 +929,7 @@ top
   margin-top: 2px;
 }
 .wrap_form .simulation_wrap .simu-content {
+  position: relative;
   padding: 3rem 4rem;
   width: 90%;
   max-width: 92rem;
@@ -939,6 +937,11 @@ top
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+}
+.wrap_form .simulation_wrap .simu-content:nth-child(n+2) {
+  margin-top: 6rem;
+  padding-top: 5rem;
 }
 .wrap_form .simulation_wrap .simu-content input,
 .wrap_form .simulation_wrap .simu-content select {
@@ -984,10 +987,18 @@ top
   transform: translateY(-50%);
   right: 2.4rem;
 }
+.wrap_form .simulation_wrap .simu-content .delete-product {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  width: 3rem;
+  aspect-ratio: 1/1;
+  background: url(../images/common/icon-delete.svg) no-repeat center/contain;
+}
 .wrap_form .simulation_wrap .simu-content .simu-step01,
 .wrap_form .simulation_wrap .simu-content .simu-step02,
 .wrap_form .simulation_wrap .simu-content .simu-step03 {
-  margin-bottom: 8rem;
+  margin-bottom: 2rem;
 }
 .wrap_form .simulation_wrap .simu-content .simu-step01 .ttl,
 .wrap_form .simulation_wrap .simu-content .simu-step02 .ttl,
@@ -1042,11 +1053,26 @@ top
 .wrap_form .simulation_wrap .simu-content .simu-step01 .item-list button.active {
   border: 2px solid #ff5906;
 }
+.wrap_form .simulation_wrap .simu-content .simu-step02 {
+  margin-top: 8rem;
+}
 .wrap_form .simulation_wrap .simu-content .simu-step02 .block {
+  position: relative;
   padding: 2.5rem 2rem;
   border: 2px solid #192130;
   border-radius: 5px;
   margin-bottom: 2rem;
+}
+.wrap_form .simulation_wrap .simu-content .simu-step02 .block:nth-child(n+2) {
+  margin-top: 4rem;
+}
+.wrap_form .simulation_wrap .simu-content .simu-step02 .block .delete-block {
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  width: 3rem;
+  aspect-ratio: 1/1;
+  background: url(../images/common/icon-delete.svg) no-repeat center/contain;
 }
 .wrap_form .simulation_wrap .simu-content .simu-step02 .block .color-wrap p,
 .wrap_form .simulation_wrap .simu-content .simu-step02 .block .size-wrap p {
