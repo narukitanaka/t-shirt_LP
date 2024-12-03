@@ -115,6 +115,9 @@ a {
   margin-bottom: 6rem;
   text-align: center;
   z-index: 0;
+  @include mq() {
+    margin-bottom: 5rem;
+  }
   div {
     position: relative;
     display: inline-block;
@@ -122,6 +125,10 @@ a {
     font-size: 4.8rem;
     font-weight: 700;
     margin-bottom: 2rem;
+    @include mq() {
+      font-size: 4rem;
+      margin-bottom: 1.5rem;
+    }
     &::before {
       content: "";
       width: 120%;
@@ -132,6 +139,10 @@ a {
       left: 50%;
       transform: translateX(-50%);
       z-index: -1;
+      @include mq() {
+        height: 2.3rem;
+        top: 2.5rem;
+      }
     }
   }
   h2 {

@@ -6,6 +6,9 @@ footer
 footer {
   padding: 6rem 0 3rem;
   background: url(images/common/footer_bg.jpg) no-repeat center/cover;
+  @include c.mq() {
+    background: url(images/common/footer_bg_sp.png) no-repeat center/cover;
+  }
   p,
   h5 {
     font-size: 1.5rem;
@@ -19,6 +22,10 @@ footer {
   .flex {
     gap: 16rem;
     margin-bottom: 5rem;
+    @include c.mq() {
+      flex-direction: column;
+      gap: 4rem;
+    }
   }
   .right {
     h5 {

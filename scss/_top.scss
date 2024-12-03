@@ -11,13 +11,25 @@ top
   background: url(images/common/mv_pc.png) no-repeat top right/cover;
   margin-left: v.pxtovw(60);
   border-bottom-left-radius: 15rem;
+  @include c.mq() {
+    height: 57rem;
+    min-height: auto;
+    background: url(images/common/mv_pc.png) no-repeat center/cover;
+    border-bottom-left-radius: 5rem;
+  }
   .mv-content {
     padding-top: v.pxtovw(190);
     padding-left: v.pxtovw(60);
+    @include c.mq() {
+      padding-top: v.pxtovw_sp(80);
+    }
     .subttl-wrap {
       display: inline-block;
       background-color: v.$sub-color01;
       margin-bottom: 2.5rem;
+      @include c.mq() {
+        margin-bottom: 1rem;
+      }
       .subttl {
         padding: 1rem 2rem;
         font-size: 2.4rem;
@@ -30,9 +42,16 @@ top
         background-clip: text;
         -webkit-text-fill-color: transparent;
         text-fill-color: transparent;
+        @include c.mq() {
+          font-size: 1.8rem;
+          padding: 1rem 0.7rem;
+        }
         .out {
           font-size: 2.9rem;
           margin: 0 0.3rem;
+          @include c.mq() {
+            font-size: 2rem;
+          }
         }
       }
     }
@@ -43,11 +62,25 @@ top
       color: #fff;
       margin-bottom: 3.4rem;
       filter: drop-shadow(v.$shadow03);
+      @include c.mq() {
+        font-size: 3rem;
+        line-height: 1.5;
+        margin-bottom: 2.4rem;
+      }
     }
     .logo {
       font-size: 2rem;
       font-weight: 500;
       color: #fff;
+      @include c.mq() {
+        width: 28rem;
+      }
+      img {
+        filter: drop-shadow(v.$shadow03);
+        @include c.mq() {
+          width: 100%;
+        }
+      }
       span {
         font-size: 4rem;
       }
@@ -59,6 +92,10 @@ top
     left: v.pxtovw(60);
     bottom: 7.3rem;
     filter: drop-shadow(v.$shadow01);
+    @include c.mq() {
+      width: 30rem;
+      bottom: 17rem;
+    }
   }
   .contact-btn {
     width: 28.4rem;
@@ -66,6 +103,11 @@ top
     right: 12rem;
     bottom: 7.3rem;
     filter: drop-shadow(v.$shadow02);
+    @include c.mq() {
+      right: 2rem;
+      bottom: 1rem;
+      width: 15rem;
+    }
   }
 }
 
@@ -74,15 +116,21 @@ top
   padding: 13.4rem 0 26.2rem;
   background: v.$grade02;
   z-index: 1;
+  @include c.mq() {
+    padding: 6rem 0 8rem;
+  }
   h2 {
     font-size: 4.8rem;
     font-weight: 700;
     line-height: 1.5;
     margin-bottom: 7.5rem;
+    @include c.mq() {
+      font-size: 2.2rem;
+      margin-bottom: 3.5rem;
+    }
     span {
       position: relative;
       display: inline-block;
-      // background-color: #000;
       color: #fff;
       &::before {
         content: "";
@@ -96,14 +144,22 @@ top
       }
       &.txt01 {
         &::before {
-          width: 535px;
-          height: 64px;
+          width: 537px;
+          height: 62px;
+          @include c.mq() {
+            width: 253px;
+            height: 26px;
+          }
         }
       }
       &.txt02 {
         &::before {
-          width: 248px;
-          height: 64px;
+          width: 247px;
+          height: 62px;
+          @include c.mq() {
+            width: 116px;
+            height: 26px;
+          }
         }
       }
     }
@@ -116,6 +172,13 @@ top
     top: 9.6rem;
     right: -4.7rem;
     width: 60rem;
+    @include c.mq() {
+      display: none;
+      // width: 25rem;
+      // right: 0;
+      // top: auto;
+      // bottom: 4rem;
+    }
   }
 }
 
@@ -132,11 +195,16 @@ top
     }
   }
   .message {
+    width: 73.5rem;
     position: absolute;
     bottom: -15rem;
     left: 50%;
     transform: translate(-50%);
     z-index: 2;
+    @include c.mq() {
+      width: 47rem;
+      bottom: -11rem;
+    }
   }
 }
 
@@ -145,8 +213,17 @@ top
   padding: 27rem 0 29.6rem;
   background: url(images/common/service_bg01.svg) no-repeat top/contain,
     url(images/common/service_bg02.svg) no-repeat bottom/contain, v.$sub-color03;
+  @include c.mq() {
+    padding: 17rem 0 15rem;
+    background: url(images/common/service_bg01_sp.svg) no-repeat top/contain,
+      url(images/common/service_bg02.svg) no-repeat bottom/contain,
+      v.$sub-color03;
+  }
   .ttl-wrap {
     margin-bottom: 7rem;
+    @include c.mq() {
+      margin-bottom: 5rem;
+    }
   }
   .flex {
     width: 115.8rem;
@@ -154,8 +231,15 @@ top
     flex-wrap: wrap;
     column-gap: 5.5rem;
     row-gap: 6rem;
+    @include c.mq() {
+      width: 100%;
+    }
     .box {
       width: calc((100% / 3) - (11rem / 3));
+      @include c.mq() {
+        width: 90%;
+        margin: 0 auto;
+      }
       .img-box {
         margin-bottom: 0.5rem;
       }
@@ -187,6 +271,10 @@ top
           background-clip: text;
           -webkit-text-fill-color: transparent;
           text-fill-color: transparent;
+          @include c.mq() {
+            font-size: 2rem;
+            padding-left: 8.5rem;
+          }
         }
       }
       p {
@@ -198,6 +286,9 @@ top
     position: absolute;
     bottom: 7rem;
     width: 100%;
+    @include c.mq() {
+      bottom: 0;
+    }
     .swiper-wrapper {
       transition-timing-function: linear !important;
       .swiper-slide {
@@ -211,9 +302,12 @@ top
 
 .wrap_lineup {
   position: relative;
-  padding: 1rem 0 30rem;
-  margin-top: -1px;
+  padding: 10rem 0 30rem;
+  margin-top: -9rem;
   z-index: 1;
+  @include c.mq() {
+    padding: 14rem 0 15rem;
+  }
   .ttl-wrap {
     margin-bottom: 7rem;
   }
@@ -221,14 +315,23 @@ top
     flex-wrap: wrap;
     column-gap: 3rem;
     row-gap: 5rem;
+    @include c.mq() {
+      row-gap: 7rem;
+    }
     .item {
       width: calc((100% / 3) - 2rem);
+      @include c.mq() {
+        width: 100%;
+      }
       .item-img_wrapper {
         display: flex;
         gap: 1rem;
         width: 100%;
         height: 300px;
         margin-bottom: 2rem;
+        @include c.mq() {
+          margin-bottom: 1rem;
+        }
         .main-image,
         .swiper-slide {
           box-shadow: v.$shadow01;
@@ -277,6 +380,9 @@ top
         font-weight: 700;
         letter-spacing: 0.5px;
         margin-bottom: 0.5rem;
+        @include c.mq() {
+          font-size: 1.8rem;
+        }
       }
       .price {
         font-size: 2rem;
@@ -289,6 +395,9 @@ top
         line-height: 1.5;
         margin-bottom: 2.2rem;
         min-height: 10rem;
+        @include c.mq() {
+          margin-bottom: 1.5rem;
+        }
       }
       .variant-color,
       .variant-size {
@@ -312,6 +421,9 @@ top
               top: 50%;
               transform: translateY(-50%);
               right: 3rem;
+            }
+            @include c.mq() {
+              font-size: 1.6rem;
             }
           }
           dd {
@@ -354,6 +466,11 @@ top
   padding: 11.7rem 0 30rem;
   background: url(images/common/flow_bg.svg) no-repeat bottom/contain,
     v.$grade03;
+  @include c.mq() {
+    padding: 10rem 0 18rem;
+    background: url(images/common/flow_bg_sp.svg) no-repeat bottom/contain,
+      v.$grade03;
+  }
   &::before {
     position: absolute;
     top: v.pxtovw(-150);
@@ -362,9 +479,17 @@ top
     width: 100%;
     aspect-ratio: 1/0.15;
     background: url(images/common/lineup_bg.svg) no-repeat center/contain;
+    @include c.mq() {
+      top: v.pxtovw_sp(-60);
+      aspect-ratio: 1/0.22;
+      background: url(images/common/lineup_bg_sp.svg) no-repeat center/cover;
+    }
   }
   .ttl-wrap {
     margin-bottom: 7rem;
+    @include c.mq() {
+      margin-bottom: 7rem;
+    }
   }
   .block {
     position: relative;
@@ -373,14 +498,18 @@ top
     max-width: 106rem;
     margin: 0 auto;
     z-index: 0;
-    &::before {
-      content: "";
+    @include c.mq() {
+      gap: 7rem;
+    }
+    .flow-line {
       width: 15.35rem;
-      aspect-ratio: 1/4.39;
-      background: url(images/common/flow_line.svg) no-repeat center/contain;
       position: absolute;
       top: 11.5rem;
       left: 46.65rem;
+      z-index: -1;
+      @include c.mq() {
+        display: none;
+      }
     }
     .box {
       position: relative;
@@ -391,6 +520,10 @@ top
       border: 4px solid #fff;
       border-radius: 10px;
       box-shadow: v.$shadow04;
+      @include c.mq() {
+        width: 100%;
+        padding: 10rem 1rem 2rem;
+      }
       &::after {
         content: "";
         position: absolute;
@@ -422,18 +555,36 @@ top
       }
       p {
         font-size: 1.5rem;
+        @include c.mq() {
+          line-height: 1.5;
+        }
       }
       &:first-of-type {
         max-height: 27.5rem;
+        @include c.mq() {
+          max-height: none;
+        }
         .img-box {
           width: 14.8rem;
           top: -6.6rem;
           left: -2.2rem;
+          @include c.mq() {
+            width: 8rem;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+          }
         }
         .contact {
           justify-content: space-between;
           align-items: flex-end;
           margin-top: 1.5rem;
+          @include c.mq() {
+            margin-top: 2rem;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+          }
           .tel {
             a {
               font-size: 2.4rem;
@@ -456,6 +607,10 @@ top
             font-weight: 700;
             color: #fff;
             background: v.$grade01;
+            @include c.mq() {
+              width: 100%;
+              aspect-ratio: 1/0.17;
+            }
             &::before {
               content: "";
               position: absolute;
@@ -474,18 +629,38 @@ top
         max-height: 22.4rem;
         margin-top: 10.5rem;
         margin-bottom: 5.1rem;
+        @include c.mq() {
+          max-height: none;
+          margin: 0;
+        }
         .img-box {
           width: 13.1rem;
           top: -10.1rem;
           right: -4.2rem;
+          @include c.mq() {
+            width: 6rem;
+            top: 3rem;
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+          }
         }
       }
       &:nth-of-type(3) {
         max-height: 24.5rem;
+        @include c.mq() {
+          max-height: none;
+        }
         .img-box {
           width: 12rem;
           top: -5.1rem;
           left: -2.2rem;
+          @include c.mq() {
+            width: 6.5rem;
+            top: 3rem;
+            left: 50%;
+            transform: translateX(-50%);
+          }
         }
         .cash {
           position: relative;
@@ -493,29 +668,55 @@ top
           border-radius: 5px;
           margin-top: 1.5rem;
           padding: 1rem 1.5rem;
+          @include c.mq() {
+            padding: 1rem 1.5rem 5rem;
+            display: flex;
+            gap: 2rem;
+          }
           h4 {
             font-size: 1.6rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
+            @include c.mq() {
+              font-size: 1.5rem;
+            }
           }
           p {
             font-size: 1.5rem;
+            @include c.mq() {
+              font-size: 1.4rem;
+            }
           }
           img {
             position: absolute;
             bottom: 1rem;
             right: 1rem;
             width: 20rem;
+            @include c.mq() {
+              right: auto;
+              left: 50%;
+              transform: translateX(-50%);
+            }
           }
         }
       }
       &:nth-of-type(4) {
         margin-top: 11rem;
         margin-bottom: 3.2rem;
+        @include c.mq() {
+          margin: 0;
+        }
         .img-box {
           width: 18.2rem;
           top: -8.2rem;
           left: -1.8rem;
+          @include c.mq() {
+            width: 8.5rem;
+            top: 3rem;
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+          }
         }
       }
       &:nth-of-type(5) {
@@ -523,6 +724,13 @@ top
           width: 21.6rem;
           bottom: -3.7rem;
           right: -11.1rem;
+          @include c.mq() {
+            width: 12.5rem;
+            top: 3rem;
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+          }
         }
       }
     }
@@ -531,9 +739,15 @@ top
 
 .wrap_faq {
   position: relative;
+  // padding: 4rem 0 13.3rem;
   margin-top: -1px;
-  padding: 4rem 0 13.3rem;
+  padding: 10rem 0 13.3rem;
+  // margin-top: -6rem;
   background: url(images/common/faq_bg.svg) no-repeat top/cover;
+  @include c.mq() {
+    padding: 5rem 0 6rem;
+    background: url(images/common/faq_bg_sp.svg) no-repeat top/cover;
+  }
   .ttl-wrap {
     div {
       color: #fff;
@@ -552,6 +766,9 @@ top
       border-radius: 5px;
       box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25),
         -5px -4px 8px rgba(255, 255, 255, 0.18);
+      @include c.mq() {
+        padding: 0 1rem;
+      }
       &:last-of-type {
         margin-bottom: 0;
       }
@@ -561,11 +778,18 @@ top
         gap: 2rem;
         color: #fff;
         padding: 1.5rem 0;
+        @include c.mq() {
+          gap: 1rem;
+        }
       }
       dt {
         position: relative;
         align-items: center;
-        font-size: 700;
+        font-weight: 700;
+        @include c.mq() {
+          max-width: 30rem;
+          align-items: flex-start;
+        }
         &::before {
           content: "";
           width: 16px;
@@ -576,11 +800,28 @@ top
           top: 50%;
           transform: translateY(-50%);
           right: 3rem;
+          @include c.mq() {
+            width: 12px;
+            top: 2.7rem;
+            transform: none;
+            right: -2rem;
+          }
+        }
+        img {
+          @include c.mq() {
+            width: 2.5rem;
+            margin-top: 1px;
+          }
         }
       }
       dd {
         align-items: flex-start;
         border-top: 1px solid #fff;
+        img {
+          @include c.mq() {
+            width: 2.5rem;
+          }
+        }
       }
       &.open {
         dt {
@@ -598,13 +839,32 @@ top
   margin-top: -1px;
   padding: 16.8rem 0 17rem;
   background: url(images/common/form_bg.svg) no-repeat top / contain;
+  @include c.mq() {
+    padding: 15rem 0 15rem;
+    background: url(images/common/form_bg_sp.svg) no-repeat top / contain;
+  }
   .txt {
     text-align: center;
     margin-bottom: 3.4rem;
   }
+  .form-rocess {
+    @include c.mq() {
+      // width: 80%;
+      // margin: 0 auto;
+      position: relative;
+      width: 100%;
+      z-index: 2;
+    }
+  }
   .simulation_wrap {
     padding: 5rem 0;
     background-color: v.$sub-color03;
+    @include c.mq() {
+      padding: 10rem 0 4rem;
+      margin-top: -16rem;
+      width: 100vw;
+      margin-left: calc(((100vw - 90vw) / 2) * -1);
+    }
     .add-wrap {
       .btn-add {
         width: 100%;
@@ -630,9 +890,19 @@ top
       border-radius: 5px;
       box-shadow: v.$shadow05;
       overflow: hidden;
+      @include c.mq() {
+        padding: 3rem 1.5rem 1rem;
+      }
+      &:first-child {
+        padding-top: 8rem;
+      }
       &:nth-child(n + 2) {
         margin-top: 6rem;
         padding-top: 5rem;
+        @include c.mq() {
+          margin-top: 4rem;
+          padding-top: 3rem;
+        }
       }
       input,
       select {
@@ -656,6 +926,9 @@ top
         select {
           width: 42.4rem;
           padding: 1.3rem 2.3rem;
+          @include c.mq() {
+            width: 100%;
+          }
         }
       }
       .btn-chart {
@@ -699,40 +972,69 @@ top
           background-color: v.$sub-color01;
           padding: 1.5rem 2.5rem;
           margin-bottom: 2rem;
+          @include c.mq() {
+            font-size: 2rem;
+            line-height: 1.5;
+            padding: 1rem 2rem;
+          }
         }
         .explan {
           line-height: 1.5;
           margin-bottom: 4rem;
+          @include c.mq() {
+            margin-bottom: 3rem;
+          }
         }
       }
       .simu-step01 {
         .item-list {
           flex-wrap: wrap;
           gap: 2.5rem;
+          @include c.mq() {
+            gap: 1rem;
+          }
           button {
             width: calc((100% / 3) - (5rem / 3));
             padding: 1rem 1.5rem;
             border: 1px solid #777;
             border-radius: 5px;
+            @include c.mq() {
+              width: 100%;
+              display: flex;
+              align-items: center;
+              gap: 1.5rem;
+            }
             &:hover {
               border: 2px solid v.$sub-color02;
             }
             .img-box {
               text-align: center;
+              @include c.mq() {
+                width: 45%;
+              }
               img {
                 width: 20rem;
+                @include c.mq() {
+                  width: 100%;
+                }
               }
             }
             .name {
               font-size: 1.3rem;
               font-weight: 700;
               margin-bottom: 0.5rem;
+              @include c.mq() {
+                font-size: 1.5rem;
+              }
               span {
                 font-size: 1.4rem;
               }
             }
             .price {
               font-size: 1.8rem;
+              @include c.mq() {
+                font-size: 1.6rem;
+              }
               span {
                 font-size: 1.2rem;
               }
@@ -745,6 +1047,9 @@ top
       }
       .simu-step02 {
         margin-top: 8rem;
+        @include c.mq() {
+          margin-top: 5rem;
+        }
         .block {
           position: relative;
           padding: 2.5rem 2rem;
@@ -768,12 +1073,22 @@ top
             p {
               font-size: 2rem;
               margin-bottom: 1.5rem;
+              @include c.mq() {
+                font-size: 1.8rem;
+              }
             }
           }
           .color-wrap {
             margin-bottom: 4rem;
+            @include c.mq() {
+              margin-bottom: 3rem;
+            }
             .flex {
               justify-content: space-between;
+              @include c.mq() {
+                flex-direction: column;
+                gap: 1rem;
+              }
             }
           }
           .size-wrap {
@@ -784,6 +1099,9 @@ top
               .box {
                 width: calc((100% / 5) - (4.8rem / 5));
                 border: 1px solid #777;
+                @include c.mq() {
+                  width: calc((100% / 2) - (2.4rem / 2));
+                }
                 p {
                   font-size: 1.8rem;
                   text-align: center;
@@ -799,6 +1117,9 @@ top
                   input {
                     width: 9.4rem;
                     padding: 0.4rem 0 0.4rem 5rem;
+                    @include c.mq() {
+                      width: 8rem;
+                    }
                   }
                 }
               }
@@ -818,8 +1139,14 @@ top
         .print-position {
           gap: 6rem;
           margin-bottom: 2.8rem;
+          @include c.mq() {
+            position: relative;
+          }
           .left {
             max-width: 42rem;
+            @include c.mq() {
+              width: 15rem;
+            }
             .checkboxes {
               display: flex;
               flex-wrap: wrap;
@@ -837,11 +1164,21 @@ top
           }
           .right {
             width: 28rem;
+            @include c.mq() {
+              width: 20rem;
+              position: absolute;
+              top: 6rem;
+              right: 0;
+            }
           }
         }
         .hukurozume {
           .flex {
             gap: 4rem;
+            @include c.mq() {
+              flex-direction: column;
+              gap: 1.5rem;
+            }
             div {
               display: flex;
               align-items: center;
@@ -867,6 +1204,12 @@ top
       letter-spacing: 1px;
       font-weight: 700;
       color: #fff;
+      @include c.mq() {
+        width: 90%;
+        aspect-ratio: 1/0.18;
+        margin-top: 5rem;
+        font-size: 1.6rem;
+      }
     }
   }
   .result-wrap {

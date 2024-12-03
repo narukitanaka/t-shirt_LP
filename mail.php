@@ -69,10 +69,10 @@ $userMail = 1;
 $BccMail = "";
 
 // 管理者宛に送信されるメールのタイトル（件名）
-$subject = "【TシャツLP(仮)】お問い合わせがあります。";
+$subject = "【sign-technica-サインテクニカ-】お問い合わせがあります。";
 
 // 送信確認画面の表示(する=1, しない=0)
-$confirmDsp = 0;
+$confirmDsp = 1;
 
 // 送信完了後に自動的に指定のページ(サンクスページなど)に移動する(する=1, しない=0)
 // CV率を解析したい場合などはサンクスページを別途用意し、URLをこの下の項目で指定してください。
@@ -80,7 +80,7 @@ $confirmDsp = 0;
 $jumpPage = 1;
 
 // 送信完了後に表示するページURL（上記で1を設定した場合のみ）※httpから始まるURLで指定ください。
-$thanksPage = "/thanks.html";
+$thanksPage = "https://gh-check.com/sing-technica/thanks.html";
 
 // 必須入力項目を設定する(する=1, しない=0)
 $requireCheck = 1;
@@ -100,7 +100,7 @@ $require = array('お名前','ふりがな','電話番号','メールアドレ�
 $remail = 1;
 
 //自動返信メールの送信者欄に表示される名前　※あなたの名前や会社名など（もし自動返信メールの送信者名が文字化けする場合ここは空にしてください）
-$refrom_name = "TシャツLP(仮)";
+$refrom_name = "sign-technica-サインテクニカ-";
 
 // 差出人に送信確認メールを送る場合のメールのタイトル（上記で1を設定した場合のみ）
 $re_subject = "お問い合わせありがとうございます。";
@@ -160,7 +160,7 @@ $hankaku_array = array('電話番号');
 //  添付ファイル処理用設定(BEGIN)
 //----------------------------------------------------------------------
 //ファイル添付機能を使用する場合は一時ファイルを保存する必要があるため確認画面の表示が必須になります。
-$confirmDsp = 0;//確認画面を表示 ※変更不可
+$confirmDsp = 1;//確認画面を表示 ※変更不可
 
 /* ----- 重要 ------*/
 //ファイルアップ部分のnameの値は必ず配列の形　例　upfile[]　としてください。※添付ファイルが1つでも
@@ -362,7 +362,7 @@ if(($confirmDsp == 0 || $sendmail == 1) && $empty_flag != 1){
       }
 
       // reCAPTCHA結果とスコアをサンクスページに渡す
-      header("Location: https://gh-check.com/v3_confirm/thanks.html?success=1&score=" . $responseKeys["score"]);
+      header("Location: https://gh-check.com/sing-technica/thanks.html?success=1&score=" . $responseKeys["score"]);
       exit;
   } else {
       // reCAPTCHAが失敗した場合、エラーメッセージを表示し、送信を中断

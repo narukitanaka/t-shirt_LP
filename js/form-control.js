@@ -111,7 +111,9 @@ class FormController {
               .join("")}
           </select>
         </div>
-        <a class="btn-chart" href="#">カラーチャートを確認</a>
+        <a class="btn-chart" href="${
+          product.charts.color
+        }" target="_blank">カラーチャートを確認</a>
       </div>
     </div>
     <div class="size-wrap">
@@ -130,7 +132,9 @@ class FormController {
           )
           .join("")}
       </div>
-      <a class="btn-chart" href="#">サイズチャートを確認</a>
+      <a class="btn-chart" href="${
+        product.charts.size
+      }" target="_blank">サイズチャートを確認</a>
     </div>
   `;
 

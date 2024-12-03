@@ -51,6 +51,10 @@ export const PRODUCTS = {
       if (size === "6L") return 741;
       return 0;
     },
+    charts: {
+      color: "./images/item/UnitedAthle_4.1/color-chart_UnitedAthle-4.1.pdf",
+      size: "./images/item/UnitedAthle_4.1/size_chart_UnitedAthle-4.1.pdf",
+    },
   },
   "united-athle-quality": {
     id: "united-athle-quality",
@@ -127,6 +131,10 @@ export const PRODUCTS = {
       }
       return 0;
     },
+    charts: {
+      color: "./images/item/UnitedAthle_5.6/color-chart_UnitedAthle-5.6.pdf",
+      size: "./images/item/UnitedAthle_5.6/size_chart_UnitedAthle-5.6.pdf",
+    },
   },
   "printstar-light": {
     id: "printstar-light",
@@ -166,6 +174,10 @@ export const PRODUCTS = {
         return isWhite ? 682 : 753;
       }
       return 0;
+    },
+    charts: {
+      color: "./images/item/printster_4.0/color-chart_Printstar-4.0.pdf",
+      size: "./images/item/printster_4.0/size_chart_Printstar-4.0.pdf",
     },
   },
   "printstar-heavy": {
@@ -260,6 +272,10 @@ export const PRODUCTS = {
       }
       return 0;
     },
+    charts: {
+      color: "./images/item/Printstar_5.6/color-chart_Printstar_5.6.pdf",
+      size: "./images/item/Printstar_5.6/size_chart_Printstar-5.6.pdf",
+    },
   },
   "printstar-super": {
     id: "printstar-super",
@@ -300,6 +316,10 @@ export const PRODUCTS = {
         return isWhite ? 1039 : 1092;
       }
       return 0;
+    },
+    charts: {
+      color: "./images/item/Printstar_7.4/color-chart_Printstar_7.4.pdf",
+      size: "./images/item/Printstar_7.4/size_chart_Printstar-7.4.pdf",
     },
   },
   "glimmer-dry": {
@@ -394,6 +414,10 @@ export const PRODUCTS = {
         return 810;
       }
       return 0;
+    },
+    charts: {
+      color: "./images/item/glimmer_4.4/color-chart_glimmer_4.4.pdf",
+      size: "./images/item/glimmer_4.4/glimmer_Printstar-4.4.pdf",
     },
   },
 };
