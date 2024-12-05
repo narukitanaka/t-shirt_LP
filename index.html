@@ -22,8 +22,11 @@
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
     rel="stylesheet">
 
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
 
-  <title>オリジナルTシャツならsign-technica｜サインテクニカ</title>
+
+  <title>sign-technica｜オリジナルTシャツ制作ならサインテクニカにお任せ</title>
   <meta name="description" content="オリジナルTシャツを1枚から大量発注まで専任スタッフのサポートのもとお手頃価格で丁寧に仕上げます。" />
   <meta name="keywords" content="" />
 </head>
@@ -34,9 +37,10 @@
 
     <header class="header">
       <div class="header-inner">
-        <div class="logo img-box"><a href="./"><img src="images/common/logo.svg" alt=""></a></div>
+        <div class="logo img-box white"><a href="./"><img src="images/common/logo.svg" alt=""></a></div>
+        <div class="logo img-box black"><a href="./"><img src="images/common/logo_b.svg" alt=""></a></div>
         <div class="flex">
-          <nav class="nav01">
+          <nav class="nav01 u-pc">
             <ul>
               <li><a href="#service">サービスの特徴</a></li>
               <li><a href="#lineup">商品ラインナップ</a></li>
@@ -44,7 +48,7 @@
               <li><a href="#faq">よくあるご質問</a></li>
             </ul>
           </nav>
-          <nav class="nav02">
+          <nav class="nav02 u-pc">
             <div class="header-tel">
               <a class="out" href="tel:055-244-3855">
                 <img src="images/common/icon-tell.svg" alt="">
@@ -52,13 +56,52 @@
               </a>
               <p>営業時間：平日/土曜　<span class="out">9:00~18:00</span></p>
             </div>
-            <div class="header-contact">
+            <div class="header-contact btn-hov_s">
               <a href="#form">簡単見積り/ 問い合わせ</a>
             </div>
           </nav>
+          <div class="u-sp">
+            <div class="hamberger-wrap">
+              <div class="ham-inner">
+                <div class="hambager-content">
+                  <button type="button" class="hambager">
+                    <span class="c-line"></span>
+                    <span class="c-line"></span>
+                    <span class="c-line"></span>
+                  </button>
+                </div><!-- /.hambager-content -->
+                <p class="ham-txt">MENU</p>
+              </div>
+            </div><!-- hamberger-wrap -->
+          </div>
         </div>
       </div><!-- /.header-inner-->
     </header>
+
+    <div class="mega-menu">
+      <div class="mega-menu_inner">
+        <div class="nav-area">
+          <nav>
+            <ul>
+              <li><a href="#service">サービスの特徴</a></li>
+              <li><a href="#lineup">商品ラインナップ</a></li>
+              <li><a href="#flow">ご利用の流れ</a></li>
+              <li><a href="#faq">よくあるご質問</a></li>
+            </ul>
+          </nav>
+        </div><!-- /.nav-area -->
+        <div class="header-tel">
+          <a class="out" href="tel:055-244-3855">
+            <img src="images/common/icon-tel_b.svg" alt="">
+            055-244-3855
+          </a>
+          <p>営業時間：平日/土曜　<span class="out">9:00~18:00</span></p>
+        </div>
+        <div class="header-contact">
+          <a href="#form">簡単見積り/ 問い合わせ</a>
+        </div>
+      </div><!-- /.mega-menu_inner -->
+    </div><!-- /.mega-menu -->
 
     <main>
 
@@ -76,14 +119,14 @@
         </div>
         <div class="gekkeizyu img-box"><img src="images/common/mv-badge_pc.png"
             alt="ご依頼件数900件以上、専任安心サポート、4,000円以上で送料無料"></div>
-        <div class="contact-btn img-box"><a href="#form"><img src="images/common/mv-btn.png"
+        <div class="contact-btn img-box btn-hov_b"><a href="#form"><img src="images/common/mv-btn.png"
               alt="最短30秒！簡単見積りシミュレーションへ"></a>
         </div>
       </div><!-- /.mv -->
 
       <section class="wrap_concept">
         <div class="inner">
-          <h2>
+          <h2 class="ttlAnime">
             1枚から大量発注まで<br>
             <span class="txt01">専任スタッフのサポート</span>のもと<br>
             <span class="txt02">お手頃価格</span>で丁寧に仕上げます。
@@ -116,7 +159,7 @@
 
       <section id="service" class="wrap_service">
         <div class="inner">
-          <div class="ttl-wrap">
+          <div class="ttl-wrap ttlAnime">
             <div>SERVICE</div>
             <h2><span class="out">6</span>つの特徴</h2>
           </div>
@@ -198,7 +241,7 @@
 
       <section id="lineup" class="wrap_lineup">
         <div class="inner">
-          <div class="ttl-wrap">
+          <div class="ttl-wrap ttlAnime">
             <div>LINE UP</div>
             <h2>商品ラインナップ</h2>
           </div>
@@ -268,7 +311,8 @@
                   </dd>
                 </dl>
               </div>
-              <a class="item-btn" href="#form"><img src="images/common/icon-simulation.svg" alt="">WEBで簡単見積り</a>
+              <a class="item-btn btn-hov_s" href="#form"><img src="images/common/icon-simulation.svg"
+                  alt="">WEBで簡単見積り</a>
             </div><!-- /.itrem -->
 
             <div class="item it02 anime-fade">
@@ -334,7 +378,8 @@
                   </dd>
                 </dl>
               </div>
-              <a class="item-btn" href="#form"><img src="images/common/icon-simulation.svg" alt="">WEBで簡単見積り</a>
+              <a class="item-btn btn-hov_s" href="#form"><img src="images/common/icon-simulation.svg"
+                  alt="">WEBで簡単見積り</a>
             </div>
 
             <div class="item it03 anime-fade">
@@ -401,7 +446,8 @@
                   </dd>
                 </dl>
               </div>
-              <a class="item-btn" href="#form"><img src="images/common/icon-simulation.svg" alt="">WEBで簡単見積り</a>
+              <a class="item-btn btn-hov_s" href="#form"><img src="images/common/icon-simulation.svg"
+                  alt="">WEBで簡単見積り</a>
             </div>
 
             <div class="item it04 anime-fade">
@@ -473,7 +519,8 @@
                   </dd>
                 </dl>
               </div>
-              <a class="item-btn" href="#form"><img src="images/common/icon-simulation.svg" alt="">WEBで簡単見積り</a>
+              <a class="item-btn btn-hov_s" href="#form"><img src="images/common/icon-simulation.svg"
+                  alt="">WEBで簡単見積り</a>
             </div>
 
             <div class="item it05 anime-fade">
@@ -540,7 +587,8 @@
                   </dd>
                 </dl>
               </div>
-              <a class="item-btn" href="#form"><img src="images/common/icon-simulation.svg" alt="">WEBで簡単見積り</a>
+              <a class="item-btn btn-hov_s" href="#form"><img src="images/common/icon-simulation.svg"
+                  alt="">WEBで簡単見積り</a>
             </div>
 
             <div class="item it06 anime-fade">
@@ -611,7 +659,8 @@
                   </dd>
                 </dl>
               </div>
-              <a class="item-btn" href="#form"><img src="images/common/icon-simulation.svg" alt="">WEBで簡単見積り</a>
+              <a class="item-btn btn-hov_s" href="#form"><img src="images/common/icon-simulation.svg"
+                  alt="">WEBで簡単見積り</a>
             </div>
 
           </div>
@@ -622,7 +671,7 @@
 
       <section id="flow" class="wrap_flow">
         <div class="inner">
-          <div class="ttl-wrap">
+          <div class="ttl-wrap ttlAnime">
             <div>FLOW</div>
             <h2>ご利用の流れ</h2>
           </div>
@@ -641,7 +690,7 @@
                   <a class="out" href="tel:055-244-3855">055-244-3855</a>
                   <p>営業時間：平日/土曜　<span class="out">9:00~18:00</span></p>
                 </div>
-                <a class="btn" href="#form">WEBで簡単見積り</a>
+                <a class="btn btn-hov_s" href="#form">WEBで簡単見積り</a>
               </div>
             </div>
 
@@ -701,7 +750,7 @@
 
       <section id="faq" class="wrap_faq">
         <div class="inner">
-          <div class="ttl-wrap">
+          <div class="ttl-wrap ttlAnime">
             <div>FAQ</div>
             <h2>よくあるご質問</h2>
           </div>
@@ -844,7 +893,7 @@
       <section id="form" class="wrap_form">
         <div class="inner">
 
-          <div class="ttl-wrap">
+          <div class="ttl-wrap ttlAnime">
             <div>FORM</div>
             <h2>WEB簡単見積りフォーム</h2>
           </div>
@@ -1022,7 +1071,7 @@
               </div><!-- /.simu-step03 -->
             </div>
 
-            <button class="btn-result">見積り結果を表示</button>
+            <button class="btn-result btn-hov_s">見積り結果を表示</button>
           </div><!-- /.simulation_wrap -->
 
           <div class="result-wrap" style="display: none;">
@@ -1056,13 +1105,13 @@
               <input type="hidden" id="estimateResult" name="見積り内容" value="">
               <table>
                 <tr>
-                  <th><label for="your_name">お名前</label></th>
+                  <th class="must"><label for="your_name">お名前</label><span>必須</span></th>
                   <td>
                     <input type="text" id="your_name" name="お名前" placeholder="例）山田 太郎" required>
                   </td>
                 </tr>
                 <tr>
-                  <th><label for="hurigana">ふりがな</label></th>
+                  <th class="must"><label for="hurigana">ふりがな</label><span>必須</span></th>
                   <td>
                     <input type="text" id="hurigana" name="ふりがな" placeholder="例）やまだ たろう" required>
                   </td>
@@ -1074,13 +1123,13 @@
                   </td>
                 </tr>
                 <tr>
-                  <th><label for="your_mail">メールアドレス</label></th>
+                  <th class="must"><label for="your_mail">メールアドレス</label><span>必須</span></th>
                   <td>
                     <input type="email" id="your_mail" name="メールアドレス" placeholder="例）you@example.com" required>
                   </td>
                 </tr>
                 <tr>
-                  <th><label for="your_tel">電話番号</label></th>
+                  <th class="must"><label for="your_tel">電話番号</label><span>必須</span></th>
                   <td>
                     <input type="tel" id="your_tel" name="電話番号" placeholder="例）090-1234-5678" required>
                   </td>
@@ -1132,8 +1181,6 @@
 
     <!-- js -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/ScrollTrigger.min.js"></script>
     <script src="js/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <script type="text/javascript" src="js/main.js"></script>

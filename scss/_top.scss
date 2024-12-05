@@ -93,8 +93,8 @@ top
     bottom: 7.3rem;
     filter: drop-shadow(v.$shadow01);
     @include c.mq() {
-      width: 30rem;
-      bottom: 17rem;
+      width: 34rem;
+      bottom: 15rem;
     }
   }
   .contact-btn {
@@ -104,9 +104,10 @@ top
     bottom: 7.3rem;
     filter: drop-shadow(v.$shadow02);
     @include c.mq() {
-      right: 2rem;
-      bottom: 1rem;
+      right: 3rem;
+      bottom: -2rem;
       width: 15rem;
+      z-index: 3;
     }
   }
 }
@@ -127,6 +128,7 @@ top
     @include c.mq() {
       font-size: 2.2rem;
       margin-bottom: 3.5rem;
+      letter-spacing: 0;
     }
     span {
       position: relative;
@@ -141,13 +143,15 @@ top
         height: 100%;
         background: v.$grade01;
         z-index: -1;
+        transform: scaleX(0);
+        transform-origin: left;
       }
       &.txt01 {
         &::before {
           width: 537px;
           height: 62px;
           @include c.mq() {
-            width: 253px;
+            width: 242px;
             height: 26px;
           }
         }
@@ -157,7 +161,7 @@ top
           width: 247px;
           height: 62px;
           @include c.mq() {
-            width: 116px;
+            width: 111px;
             height: 26px;
           }
         }
@@ -171,13 +175,9 @@ top
     position: absolute;
     top: 9.6rem;
     right: -4.7rem;
-    width: 60rem;
+    width: min(v.pxtovw(600), 60rem);
     @include c.mq() {
       display: none;
-      // width: 25rem;
-      // right: 0;
-      // top: auto;
-      // bottom: 4rem;
     }
   }
 }
@@ -428,6 +428,11 @@ top
           }
           dd {
             padding: 1.5rem 0;
+            img {
+              @include c.mq() {
+                width: 100%;
+              }
+            }
           }
           &.open {
             dt {
@@ -1215,6 +1220,9 @@ top
   .result-wrap {
     position: relative;
     margin-bottom: 12rem;
+    @include c.mq() {
+      margin-bottom: 8rem;
+    }
     &::before {
       content: "";
       width: 0;
@@ -1226,6 +1234,9 @@ top
       bottom: -5rem;
       left: 50%;
       transform: translateX(-50%);
+      @include c.mq() {
+        bottom: -4rem;
+      }
     }
     .result-arrow {
       width: 12.1rem;
@@ -1235,6 +1246,10 @@ top
       max-width: 84rem;
       margin: 0 auto;
       background-color: v.$sub-color03;
+      @include c.mq() {
+        width: 100vw;
+        margin-left: calc(((100vw - 90vw) / 2) * -1);
+      }
       .ttl {
         font-size: 2.4rem;
         font-weight: 500;
@@ -1242,43 +1257,81 @@ top
         color: #fff;
         background-color: v.$sub-color01;
         padding: 2.7rem 0;
+        @include c.mq() {
+          font-size: 2rem;
+          padding: 2rem 0;
+        }
       }
       .block_wrap {
         padding: 3rem 4.5rem 6rem;
+        @include c.mq() {
+          padding: 3rem 1rem 6rem;
+        }
       }
       .block {
         margin-bottom: 3rem;
+        @include c.mq() {
+          margin-bottom: 2rem;
+        }
         .name {
           font-size: 1.8rem;
           padding-bottom: 1.25rem;
           border-bottom: 1px solid #000;
           margin-bottom: 1.2rem;
+          @include c.mq() {
+            font-size: 1.4rem;
+          }
         }
         .group {
           padding-left: 5rem;
           justify-content: space-between;
           margin-bottom: 1rem;
+          @include c.mq() {
+            padding-left: 0;
+          }
           &:last-of-type {
             margin-bottom: 0;
           }
           p {
             font-size: 1.4rem;
             font-weight: 400;
+            @include c.mq() {
+              font-size: 1.2rem;
+            }
             span {
               font-size: 1.8rem;
               font-weight: 500;
               margin-left: 2rem;
+              @include c.mq() {
+                font-size: 1.2rem;
+                margin-left: 0.5rem;
+              }
             }
           }
           .child {
-            flex-basis: 65%;
+            flex-basis: 60%;
+            @include c.mq() {
+              flex-basis: 57%;
+            }
             div {
               display: flex;
               justify-content: space-between;
               p {
                 flex-basis: 27%;
+                @include c.mq() {
+                  flex-basis: 33%;
+                }
+                &:first-of-type {
+                  flex-basis: 37%;
+                }
                 &:last-of-type {
                   text-align: end;
+                  @include c.mq() {
+                    flex-basis: 25%;
+                  }
+                }
+                span {
+                  margin-left: 0;
                 }
               }
             }
@@ -1291,10 +1344,23 @@ top
           padding-top: 1.5rem;
           border-top: 1px solid #aaa9ad;
           margin-left: 5rem;
+          @include c.mq() {
+            margin-left: 0;
+            gap: 4rem;
+          }
+          @include c.mq() {
+            padding-top: 1rem;
+          }
           p {
             font-size: 1.8rem;
+            @include c.mq() {
+              font-size: 1.6rem;
+            }
             span {
               font-size: 2.4rem;
+              @include c.mq() {
+                font-size: 1.8rem;
+              }
             }
           }
         }
@@ -1302,6 +1368,9 @@ top
         &.option {
           p {
             font-size: 1.6rem;
+            @include c.mq() {
+              font-size: 1.4rem;
+            }
             span {
               font-size: 1.8rem;
               font-weight: 500;
@@ -1319,14 +1388,24 @@ top
         padding: 2rem 2rem 1.8rem;
         color: #fff;
         background: v.$grade01;
+        @include c.mq() {
+          gap: 2rem;
+          padding: 1.5rem 2rem 1rem;
+        }
         p {
           font-size: 2rem;
+          @include c.mq() {
+            font-size: 1.5rem;
+          }
           span {
             font-size: 1.5rem;
           }
           &.price {
             font-size: 3rem;
             font-weight: 700;
+            @include c.mq() {
+              font-size: 2.4rem;
+            }
           }
         }
       }
@@ -1339,14 +1418,23 @@ top
       color: v.$sub-color01;
       text-align: center;
       margin-bottom: 4rem;
+      @include c.mq() {
+        font-size: 2rem;
+      }
     }
     form {
       width: 76rem;
       margin: 0 auto;
+      @include c.mq() {
+        width: 100%;
+      }
       table {
         table-layout: fixed;
         width: 100%;
         margin-bottom: 6rem;
+        @include c.mq() {
+          margin-bottom: 4rem;
+        }
         tr {
           display: block;
           padding: 2rem;
@@ -1357,17 +1445,49 @@ top
             th {
               padding-top: 1rem;
               vertical-align: baseline;
+              @include c.mq() {
+                padding-top: 0;
+              }
             }
           }
           th,
           td {
             font-size: 1.6rem;
             letter-spacing: 1px;
+            @include c.mq() {
+              display: block;
+              width: 100%;
+            }
           }
           th {
             width: 40%;
             vertical-align: middle;
             font-weight: 600;
+            position: relative;
+            @include c.mq() {
+              width: 100%;
+              padding-bottom: 1rem;
+              display: flex;
+              gap: 2rem;
+              align-items: center;
+            }
+            span {
+              display: inline-block;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+              right: 4em;
+              font-size: 1.2rem;
+              color: #fff;
+              padding: 0.1rem 1rem;
+              background-color: #ff370a;
+              border-radius: 2px;
+              @include c.mq() {
+                position: static;
+                transform: none;
+                font-size: 1rem;
+              }
+            }
           }
           td {
             input,
@@ -1379,6 +1499,9 @@ top
               padding: 1rem 1.5rem;
               font-size: 1.6rem;
               letter-spacing: 1px;
+              @include c.mq() {
+                width: 100%;
+              }
             }
           }
         }
@@ -1413,17 +1536,31 @@ top
   }
 }
 .wrap_thanks {
-  padding: 15rem 020rem;
+  padding: 15rem 0 20rem;
   background: url(images/common/form_bg.svg) no-repeat top/contain;
+  @include c.mq() {
+    background: url(images/common/form_bg_sp.svg) no-repeat top/contain;
+    padding: 10rem 0;
+  }
   h2 {
     font-size: 2.4rem;
     text-align: center;
     margin-bottom: 6rem;
+    @include c.mq() {
+      font-size: 2rem;
+      line-height: 1.5;
+      margin-bottom: 4rem;
+    }
   }
   .text {
     text-align: center;
     line-height: 2;
     margin-bottom: 3rem;
+    @include c.mq() {
+      text-align: left;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
   }
   .contact-tel {
     display: flex;
@@ -1434,6 +1571,12 @@ top
     max-width: 60rem;
     padding: 4rem 2rem;
     margin: 6rem auto 4rem;
+    @include c.mq() {
+      flex-direction: column;
+      gap: 1.5rem;
+      padding: 2rem 1rem;
+      margin: 4rem 0 2rem;
+    }
     p,
     a {
       color: #fff;

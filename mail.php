@@ -80,7 +80,7 @@ $confirmDsp = 1;
 $jumpPage = 1;
 
 // 送信完了後に表示するページURL（上記で1を設定した場合のみ）※httpから始まるURLで指定ください。
-$thanksPage = "https://gh-check.com/sing-technica/thanks.html";
+$thanksPage = "https://gh-check.com/sign-technica/thanks.html";
 
 // 必須入力項目を設定する(する=1, しない=0)
 $requireCheck = 1;
@@ -362,7 +362,7 @@ if(($confirmDsp == 0 || $sendmail == 1) && $empty_flag != 1){
       }
 
       // reCAPTCHA結果とスコアをサンクスページに渡す
-      header("Location: https://gh-check.com/sing-technica/thanks.html?success=1&score=" . $responseKeys["score"]);
+      header("Location: https://gh-check.com/sign-technica/thanks.html?success=1&score=" . $responseKeys["score"]);
       exit;
   } else {
       // reCAPTCHAが失敗した場合、エラーメッセージを表示し、送信を中断

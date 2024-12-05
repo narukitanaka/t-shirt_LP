@@ -22,3 +22,68 @@
     transition: transfrom 0.5s;
   }
 }
+
+.ttl-wrap {
+  &.visible {
+    div {
+      &::before {
+        animation: gradientWidth01 0.6s ease-in-out forwards;
+      }
+    }
+  }
+}
+.wrap_concept {
+  h2 {
+    &.visible {
+      span {
+        &::before {
+          animation: gradientWidth02 0.6s ease-in-out forwards;
+        }
+      }
+      .txt02 {
+        &::before {
+          animation-delay: 0.2s;
+        }
+      }
+    }
+  }
+}
+
+@keyframes gradientWidth01 {
+  0% {
+    transform: translateX(-50%) scaleX(0);
+  }
+  100% {
+    transform: translateX(-50%) scaleX(1);
+  }
+}
+@keyframes gradientWidth02 {
+  0% {
+    transform: translateX(0%) scaleX(0);
+  }
+  100% {
+    transform: translateX(0%) scaleX(1);
+  }
+}
+
+.btn-hov_b {
+  transition: all 0.3s;
+  &:hover {
+    scale: 1.1;
+  }
+}
+.btn-hov_s {
+  background: linear-gradient(
+    135deg,
+    rgba(232, 121, 20, 1) 0%,
+    rgba(255, 89, 6, 1) 50%,
+    rgba(232, 121, 20, 1) 100%
+  ) !important;
+  background-position: 0% 50% !important;
+  background-size: 200% auto !important;
+  transition: all 0.3s;
+  &:hover {
+    background-position: 100% 50% !important;
+    scale: 0.95;
+  }
+}

@@ -1,27 +1,52 @@
+////////////////////////////////////////////////////////////////////////////////////////
+// GSAPアニメーション
+///////////////////////////////////////////////////////////////////////////////////////
+//順番にフェードイン
+document.querySelectorAll(".fade_triger").forEach((trigger) => {
+  gsap.fromTo(
+    trigger.querySelectorAll(".anime-fade"),
+    { opacity: 0, y: -10 },
+    {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      stagger: 0.3, // 順番にフェードインする間隔
+      scrollTrigger: {
+        trigger: trigger,
+        start: "top 50%",
+      },
+    }
+  );
+});
+
 ///////////////////////////////////////////
 //ハンバーガーメニュー
 //////////////////////////////////////////
-// $('.hambager').on('click', function () {
-//   navOpen();
-// });
-// let navFlg = false;
-// function navOpen() {
-//   if (!navFlg) {
-//     $('.hamberger-wrap').addClass('is-ham-open');
-//     $('.mega-menu').addClass('is-megamenu-open');
-//     $('.header-inner').addClass('is-megamenu-icon');
-//     $('#header').addClass('is-megamenu-headfix');
-//     $('.ham-txt').text('閉じる');
-//     navFlg = true;
-//   } else {
-//     $('.hamberger-wrap').removeClass('is-ham-open');
-//     $('.mega-menu').removeClass('is-megamenu-open');
-//     $('.header-inner').removeClass('is-megamenu-icon');
-//     $('#header').removeClass('is-megamenu-headfix');
-//     $('.ham-txt').text('メニュー');
-//     navFlg = false;
-//   }
-// }
+$(".hambager").on("click", function () {
+  navOpen();
+});
+let navFlg = false;
+function navOpen() {
+  if (!navFlg) {
+    $(".hamberger-wrap").addClass("is-ham-open");
+    $(".mega-menu").addClass("is-megamenu-open");
+    $("header").addClass("is-megamenu-header");
+    $(".ham-txt").text("CLOSE");
+    navFlg = true;
+  } else {
+    $(".hamberger-wrap").removeClass("is-ham-open");
+    $(".mega-menu").removeClass("is-megamenu-open");
+    $("header").removeClass("is-megamenu-header");
+    $(".ham-txt").text("MENU");
+    navFlg = false;
+  }
+}
+// ページ内リンクをクリックしたときにメニューを閉じる
+$('.mega-menu a[href^="#"]').on("click", function () {
+  if (navFlg) {
+    navOpen(); // メニューが開いている場合は閉じる
+  }
+});
 
 ////////////////////////////////////////////
 //メインビジュアルを過ぎたらheaderが固定表示される
@@ -59,6 +84,26 @@ function showElement(entries) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("active");
+    }
+  });
+}
+
+///////////////////////////////////////////
+//見出しアニメーション
+///////////////////////////////////////////
+const fadeInTtl = document.querySelectorAll(".ttlAnime");
+const optionsTtl = {
+  rootMargin: "0px",
+  threshold: 0.6,
+};
+const observerTtl = new IntersectionObserver(showElement, optionsTtl);
+fadeInTtl.forEach((fadeInTtl) => {
+  observerTtl.observe(fadeInTtl);
+});
+function showElement(entries) {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
     }
   });
 }
@@ -180,25 +225,4 @@ $.fancybox.defaults.hash = false;
     protect: true,
     animationEffect: "zoom",
   });
-});
-
-////////////////////////////////////////////////////////////////////////////////////////
-// GSAPアニメーション
-///////////////////////////////////////////////////////////////////////////////////////
-//順番にフェードイン
-document.querySelectorAll(".fade_triger").forEach((trigger) => {
-  gsap.fromTo(
-    trigger.querySelectorAll(".anime-fade"),
-    { opacity: 0, y: -10 },
-    {
-      opacity: 1,
-      y: 0,
-      duration: 0.7,
-      stagger: 0.3, // 順番にフェードインする間隔
-      scrollTrigger: {
-        trigger: trigger,
-        start: "top 50%",
-      },
-    }
-  );
 });

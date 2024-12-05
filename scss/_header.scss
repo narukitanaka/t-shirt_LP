@@ -6,16 +6,36 @@ header
 header {
   position: absolute;
   width: 100%;
-  padding: 2.4rem v.pxtovw(15) 1.5rem v.pxtovw(121);
+  padding: v.pxtovw(24) v.pxtovw(15) 1.5rem v.pxtovw(121);
   z-index: 999;
   transition: all 0.3s;
+  @include c.mq() {
+    padding-top: v.pxtovw_sp(10);
+    padding-right: v.pxtovw_sp(20);
+  }
   &.fixed-active {
     position: fixed;
     background-color: rgba($color: #000000, $alpha: 0.6);
     padding: 2.4rem v.pxtovw(15) 1.5rem v.pxtovw(80);
+    @include c.mq() {
+      padding: v.pxtovw_sp(20) v.pxtovw_sp(20) 1.5rem;
+    }
   }
-  @include c.mq() {
-    display: none;
+  &.is-megamenu-header {
+    position: fixed;
+    padding: v.pxtovw_sp(20) v.pxtovw_sp(20) 1.5rem;
+    background-color: transparent;
+    .header-inner {
+      .logo {
+        width: 20rem;
+        &.white {
+          display: none;
+        }
+        &.black {
+          display: block !important;
+        }
+      }
+    }
   }
   a,
   p {
@@ -25,9 +45,18 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include c.mq() {
+      align-items: flex-start;
+    }
   }
   .logo {
     width: 18rem;
+    @include c.mq() {
+      width: 15rem;
+    }
+    &.black {
+      display: none;
+    }
   }
   .flex {
     gap: 5.5rem;
@@ -39,7 +68,7 @@ header {
       gap: 2.4rem;
       li {
         a {
-          font: 1.4rem;
+          font-size: 1.4rem;
           font-weight: 700;
           letter-spacing: 0;
         }
@@ -53,7 +82,7 @@ header {
     .header-tel {
       a {
         display: flex;
-        font-size: 2.4rem;
+        font-size: min(v.pxtovw(24), 2.4rem);
         line-height: 1;
         letter-spacing: 2px;
         font-weight: 700;
@@ -63,7 +92,7 @@ header {
       }
       p {
         text-align: center;
-        font-size: 1.2rem;
+        font-size: min(v.pxtovw(12), 1.2rem);
         letter-spacing: 0.6px;
       }
     }
@@ -80,6 +109,250 @@ header {
         font-weight: 700;
         letter-spacing: 0;
       }
+    }
+  }
+}
+
+//ハンバーガーボタン
+.hamberger-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .ham-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+  }
+  &.under-hum {
+    .hambager {
+      .c-line {
+        background-color: #000;
+      }
+    }
+    p {
+      color: #000;
+    }
+  }
+  &.is-ham-open {
+    .hambager {
+      .c-line {
+        background-color: #000;
+        &:first-of-type {
+          animation: line1-open var(--navTransition) forwards;
+        }
+        &:nth-of-type(2) {
+          animation: line2-open var(--navTransition) forwards;
+        }
+        &:last-of-type {
+          animation: line3-open var(--navTransition) forwards;
+        }
+      }
+    }
+    p {
+      color: #000;
+    }
+  }
+}
+.hambager-content {
+  position: relative;
+  width: 2.9rem;
+  height: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2px;
+}
+:root {
+  --navTransition: 0.4s;
+}
+.hambager {
+  width: 2.9rem;
+  height: 1.6rem;
+  position: relative;
+  display: block;
+  cursor: pointer;
+  .c-line {
+    height: 2px;
+    background-color: #fff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    @include c.mq() {
+      width: 100%;
+    }
+    &:first-of-type {
+      top: 0;
+      animation: line1 var(--navTransition) forwards;
+    }
+    &:nth-of-type(2) {
+      top: 50%;
+      animation: line2 var(--navTransition) forwards;
+    }
+    &:last-of-type {
+      top: 100%;
+      animation: line3 var(--navTransition) forwards;
+    }
+  }
+}
+
+@keyframes line1 {
+  0% {
+    top: 50%;
+    transform: rotate(45deg);
+  }
+  50% {
+    transform: rotate(0);
+    top: 50%;
+  }
+  100% {
+    transform: rotate(0);
+    top: 0;
+  }
+}
+@keyframes line1-open {
+  0% {
+    transform: rotate(0);
+    top: 0;
+  }
+  50% {
+    transform: rotate(0);
+    top: 50%;
+  }
+  100% {
+    top: 50%;
+    transform: rotate(45deg);
+  }
+}
+@keyframes line2 {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes line2-open {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes line3 {
+  0% {
+    top: 50%;
+    transform: rotate(-45deg);
+  }
+  50% {
+    transform: rotate(0);
+    top: 50%;
+  }
+  100% {
+    transform: rotate(0);
+    top: 100%;
+  }
+}
+@keyframes line3-open {
+  0% {
+    transform: rotate(0);
+    top: 100%;
+  }
+  50% {
+    transform: rotate(0);
+    top: 50%;
+  }
+  100% {
+    top: 50%;
+    transform: rotate(-45deg);
+  }
+}
+
+.mega-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100svh;
+  padding-top: 10rem;
+  transform: translateX(100%);
+  background-color: rgba($color: #fff, $alpha: 0.7);
+  backdrop-filter: blur(12px);
+  overflow: scroll;
+  z-index: 998;
+  transition: all 0.3s;
+  &.is-megamenu-open {
+    transform: translateX(0);
+  }
+  .mega-menu_inner {
+    width: 80%;
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+  .nav-area {
+    margin-bottom: 8rem;
+    nav {
+      ul {
+        li {
+          a {
+            display: block;
+            width: 100%;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            padding: 2rem 0;
+            border-bottom: 1px solid #000;
+          }
+        }
+      }
+    }
+  }
+  .header-tel {
+    margin-bottom: 3rem;
+    a {
+      display: flex;
+      justify-content: center;
+      font-size: 3.2rem;
+      line-height: 1;
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-right: v.pxtovw_sp(20);
+      img {
+        width: 25px;
+        margin-top: 2px;
+        margin-right: 5px;
+      }
+    }
+    p {
+      text-align: center;
+      font-size: 1.4rem;
+      letter-spacing: 0.6px;
+    }
+  }
+  .header-contact {
+    width: 30rem;
+    aspect-ratio: 1/0.25;
+    background: v.$grade01;
+    a {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0;
+      color: #fff;
     }
   }
 }
