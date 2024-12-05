@@ -466,6 +466,10 @@ class FormController {
     // お問い合わせフォームを表示
     document.querySelector(".contact-wrap").style.display = "block";
 
+    document
+      .querySelector(".result-wrap")
+      .scrollIntoView({ behavior: "smooth" });
+
     // 見積り結果を隠しフィールドに格納
     const estimateResultText = this.formatEstimateResult(result);
     const hiddenField = document.querySelector("#estimateResult");
