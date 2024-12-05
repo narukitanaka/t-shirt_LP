@@ -1051,9 +1051,11 @@ top
         }
       }
       .simu-step02 {
-        margin-top: 8rem;
+        margin-top: -2rem;
+        padding-top: 10rem;
         @include c.mq() {
-          margin-top: 5rem;
+          margin-top: -5rem;
+          padding-top: 10rem;
         }
         .block {
           position: relative;

@@ -37,6 +37,8 @@ class FormController {
         const step2 = currentSimuContent.querySelector(".simu-step02");
         if (step2) step2.style.display = "block";
 
+        step2.scrollIntoView({ behavior: "smooth" });
+
         // 商品追加ボタンを表示
         const addProductButton = document.querySelector(
           ".simulation_wrap > .add-wrap"

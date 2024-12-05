@@ -1991,11 +1991,13 @@ top
   border: 2px solid #ff5906;
 }
 .wrap_form .simulation_wrap .simu-content .simu-step02 {
-  margin-top: 8rem;
+  margin-top: -2rem;
+  padding-top: 10rem;
 }
 @media screen and (max-width: 768px) {
   .wrap_form .simulation_wrap .simu-content .simu-step02 {
-    margin-top: 5rem;
+    margin-top: -5rem;
+    padding-top: 10rem;
   }
 }
 .wrap_form .simulation_wrap .simu-content .simu-step02 .block {
