@@ -473,7 +473,7 @@ top
     v.$grade03;
   @include c.mq() {
     padding: 10rem 0 18rem;
-    background: url(images/common/flow_bg_sp.svg) no-repeat bottom/contain,
+    background: url(images/common/flow_bg_sp.svg) no-repeat bottom/101%,
       v.$grade03;
   }
   &::before {
@@ -846,7 +846,7 @@ top
   background: url(images/common/form_bg.svg) no-repeat top / contain;
   @include c.mq() {
     padding: 15rem 0 15rem;
-    background: url(images/common/form_bg_sp.svg) no-repeat top / contain;
+    background: url(images/common/form_bg_sp.svg) no-repeat top / 101%;
   }
   .txt {
     text-align: center;
