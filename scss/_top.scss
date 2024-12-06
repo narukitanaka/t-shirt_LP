@@ -211,7 +211,7 @@ top
 .wrap_service {
   position: relative;
   padding: 27rem 0 29.6rem;
-  background: url(images/common/service_bg01.svg) no-repeat top/contain,
+  background: url(images/common/service_bg01.svg) no-repeat top/101%,
     url(images/common/service_bg02.svg) no-repeat bottom/contain, v.$sub-color03;
   @include c.mq() {
     padding: 17rem 0 15rem;

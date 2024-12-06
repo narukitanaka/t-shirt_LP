@@ -4,6 +4,7 @@
 footer
 *************************************************/
 footer {
+  position: relative;
   padding: 6rem 0 3rem;
   background: url(images/common/footer_bg.jpg) no-repeat center/cover;
   @include c.mq() {
@@ -32,5 +33,16 @@ footer {
       font-weight: 500;
       margin-bottom: 1rem;
     }
+  }
+  .to-top {
+    position: absolute;
+    top: -7.5rem;
+    right: 0;
+    width: 7.5rem;
+    aspect-ratio: 1/1;
+    background: v.$grade01;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

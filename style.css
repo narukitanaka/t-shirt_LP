@@ -793,6 +793,7 @@ header .nav02 .header-contact a {
 footer
 *************************************************/
 footer {
+  position: relative;
   padding: 6rem 0 3rem;
   background: url(images/common/footer_bg.jpg) no-repeat center/cover;
 }
@@ -824,6 +825,17 @@ footer .flex {
 footer .right h5 {
   font-weight: 500;
   margin-bottom: 1rem;
+}
+footer .to-top {
+  position: absolute;
+  top: -7.5rem;
+  right: 0;
+  width: 7.5rem;
+  aspect-ratio: 1/1;
+  background: linear-gradient(135deg, rgb(232, 121, 20) 0%, rgb(255, 89, 6) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*************************************************
@@ -1063,7 +1075,7 @@ top
 .wrap_service {
   position: relative;
   padding: 27rem 0 29.6rem;
-  background: url(images/common/service_bg01.svg) no-repeat top/contain, url(images/common/service_bg02.svg) no-repeat bottom/contain, #f3f2f7;
+  background: url(images/common/service_bg01.svg) no-repeat top/101%, url(images/common/service_bg02.svg) no-repeat bottom/contain, #f3f2f7;
 }
 @media screen and (max-width: 768px) {
   .wrap_service {

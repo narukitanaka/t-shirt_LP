@@ -96,11 +96,11 @@ const optionsTtl = {
   rootMargin: "0px",
   threshold: 0.6,
 };
-const observerTtl = new IntersectionObserver(showElement, optionsTtl);
+const observerTtl = new IntersectionObserver(showTitleElement, optionsTtl);
 fadeInTtl.forEach((fadeInTtl) => {
   observerTtl.observe(fadeInTtl);
 });
-function showElement(entries) {
+function showTitleElement(entries) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       entry.target.classList.add("visible");
