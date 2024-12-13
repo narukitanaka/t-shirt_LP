@@ -38,7 +38,7 @@ if (version_compare(PHP_VERSION, '5.1.0', '>=')) {//PHP5.1.0以上の場合の�
 $site_top = "./";
 
 // 管理者メールアドレス ※メールを受け取るメールアドレス(複数指定する場合は「,」で区切ってください 例 $to = "aa@aa.aa,bb@bb.bb";)
-$to = "register@g-hill.jp";
+$to = "info@signtechnica.co.jp";
 
 //フォームのメールアドレス入力箇所のname属性の値（name="○○"　の○○部分）
 $Email = "メールアドレス";
@@ -69,7 +69,7 @@ $userMail = 1;
 $BccMail = "";
 
 // 管理者宛に送信されるメールのタイトル（件名）
-$subject = "【sign-technica-サインテクニカ-】お問い合わせがあります。";
+$subject = "【sign-technica｜サインテクニカ-】お問い合わせがあります。";
 
 // 送信確認画面の表示(する=1, しない=0)
 $confirmDsp = 1;
@@ -80,7 +80,7 @@ $confirmDsp = 1;
 $jumpPage = 1;
 
 // 送信完了後に表示するページURL（上記で1を設定した場合のみ）※httpから始まるURLで指定ください。
-$thanksPage = "https://gh-check.com/sign-technica/thanks.html";
+$thanksPage = "https://signtechnica.co.jp/sign-technica/thanks.html";
 
 // 必須入力項目を設定する(する=1, しない=0)
 $requireCheck = 1;
@@ -100,7 +100,7 @@ $require = array('お名前','ふりがな','電話番号','メールアドレ�
 $remail = 1;
 
 //自動返信メールの送信者欄に表示される名前　※あなたの名前や会社名など（もし自動返信メールの送信者名が文字化けする場合ここは空にしてください）
-$refrom_name = "sign-technica-サインテクニカ-";
+$refrom_name = "sign-technica｜サインテクニカ-";
 
 // 差出人に送信確認メールを送る場合のメールのタイトル（上記で1を設定した場合のみ）
 $re_subject = "お問い合わせありがとうございます。";
@@ -340,7 +340,7 @@ if(($confirmDsp == 0 || $sendmail == 1) && $empty_flag != 1){
 	// }
 
   // reCAPTCHA 追記
-  $secret_key = '6LflXFMqAAAAAFb4-jhcW3PDQaVIxTfZklKc8nPo'; //取得したシークレットキーを入れてください
+  $secret_key = '6LcgWpcqAAAAAHrIyP8fosikdVM2uLHhkwqprPOl'; //取得したシークレットキーを入れてください
   // フォームから送信されたトークンを取得
   $recaptcha_token = $_POST['recaptcha_token'];
   // reCAPTCHAをGoogleのAPIで検証
@@ -538,12 +538,12 @@ if(isset($_FILES[$upfile_key]["tmp_name"])){
 ?>
 <!-- reCAPTCHA（確認画面あり）追記 -->
 <!-- render=にサイトキーを入れてください -->
-<script src="https://www.google.com/recaptcha/api.js?render=6LflXFMqAAAAADkDkadRRhOvSS4SJL6MDWxxf_KC"></script> 
+<script src="https://www.google.com/recaptcha/api.js?render=6LcgWpcqAAAAAI6ekYjmlQEc68IJ1I_Zx_q_tGFy"></script> 
 <script>
     grecaptcha.ready(function() {
         document.querySelector('.confirmbtn').addEventListener('click', function(e) {
             e.preventDefault(); // フォーム送信を一旦止める
-            grecaptcha.execute('6LflXFMqAAAAADkDkadRRhOvSS4SJL6MDWxxf_KC', {action: 'submit'}).then(function(token) { //サイトキーを入れます
+            grecaptcha.execute('6LcgWpcqAAAAAI6ekYjmlQEc68IJ1I_Zx_q_tGFyC', {action: 'submit'}).then(function(token) { //サイトキーを入れます
                 // reCAPTCHAのトークンをフォームに追加
                 let recaptchaResponse = document.createElement('input');
                 recaptchaResponse.type = 'hidden';
